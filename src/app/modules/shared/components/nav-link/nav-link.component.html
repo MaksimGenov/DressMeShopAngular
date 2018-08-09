@@ -1,0 +1,5 @@
+<div class="nav-link-box">
+  <a *ngIf='navLink' routerLink='{{navLink.url}}' routerLinkActive='active' class="nav-link">
+    {{navLink.name | titlecase}}
+  </a>
+</div>
