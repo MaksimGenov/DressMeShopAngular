@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { BrandService } from '../../../../services/brand-service/brand.service';
 import { Category } from '../../../../models/Category';
 import { Brand } from '../../../../models/Brand';
+import { BrandService } from '../../../../services/brand-service/brand.service';
 import { CategoryService } from '../../../../services/category-service/category.service';
 import { ImageService } from '../../../../services/image-service/image.service';
 import { ProductService } from '../../../../services/product-service/product.service';

@@ -1,16 +1,18 @@
-<div class="container-fluid p-0">
-  <div class="row m-auto">
-    <img class="product-card-img" src="{{product.images[0].url}}" />
-  </div>
-  <div class="p-2">
-    <div>
-      <span>{{product.brand.name | titlecase}}</span>
+<div class="container-fluid p-0 element-link" [@zoom]='zoomed' (mouseenter)='toogleZoom()' (mouseleave)='toogleZoom()'>
+  <a routerLink="../../product/{{product._id}}" class="">
+    <div class="row m-auto">
+      <img class="product-card-img" src="{{product.images[0].url}}" />
     </div>
-    <div>
-      <span>{{product.model}}</span>
+    <div class="p-2">
+      <div>
+        <small>{{product.brand.name | titlecase}}</small>
+      </div>
+      <div>
+        <span>{{product.model | titlecase}}</span>
+      </div>
+      <div>
+        <small>{{product.price}} $</small>
+      </div>
     </div>
-    <div>
-      <span>{{product.price}} $</span>
-    </div>
-  </div>
+  </a>
 </div>

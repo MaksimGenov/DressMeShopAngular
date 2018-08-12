@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router'
+import { ProductDetailsComponent } from './modules/shared/components/product-details/product-details.component';
 
 const routes: Routes = [
   {path: 'brands', loadChildren: './modules/brands-page/brands-page.module#BrandsPageModule'},

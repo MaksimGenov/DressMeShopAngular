@@ -1,11 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
+import { AppRoutingModule } from './app-routing.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
-import { AppRoutingModule } from './app-routing.module';
-import { RouterModule } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
-import { SelectedDirective } from './modules/shared/directives/selected.directive';
+import { SharedModule } from './modules/shared/shared.module';
+import { ProductService } from './services/product-service/product.service';
 
 @NgModule({
   declarations: [
@@ -13,11 +15,13 @@ import { SelectedDirective } from './modules/shared/directives/selected.directiv
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
     RouterModule,
     AppRoutingModule,
-    HttpClientModule,
+    SharedModule
   ],
-  providers: [],
+  providers: [ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,10 +1,4 @@
-<a routerLink=''>Home</a>
-<br/>
-<a routerLink='brands'>Brands</a>
-<br/>
-<a routerLink='categories'>Categories</a>
-<br/>
-<a routerLink='admin'>Admin</a>
-<br/>
-<a routerLink='all'>All</a>
-<router-outlet></router-outlet>
+<div class="container-fluid">
+  <app-nav-horizontal [navLinks]='navLinks'></app-nav-horizontal>
+  <router-outlet></router-outlet>
+</div>

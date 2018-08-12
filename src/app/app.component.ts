@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Link } from './models/Link';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,22 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'DressMeShop';
+  private navLinks: Link[] = [
+    {
+      name: 'Brands',
+      url: 'brands'
+    },
+    {
+      name: 'Categories',
+      url: 'categories'
+    },
+    {
+      name: 'Admin',
+      url: 'admin'
+    },
+    {
+      name: 'Home',
+      url: ''
+    },
+  ]
 }

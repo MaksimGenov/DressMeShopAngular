@@ -1,8 +1,8 @@
 import { Component, OnInit, SimpleChanges, OnChanges } from '@angular/core';
-import { Product } from '../../../../models/Product';
 import { ActivatedRoute } from '@angular/router';
+
+import { Product } from '../../../../models/Product';
 import { BrandService } from '../../../../services/brand-service/brand.service';
-import { Observable } from '../../../../../../node_modules/rxjs';
 
 @Component({
   selector: 'app-brand-products-list',
@@ -10,9 +10,10 @@ import { Observable } from '../../../../../../node_modules/rxjs';
   styleUrls: ['./brand-products-list.component.css']
 })
 export class BrandProductsListComponent implements OnInit {
-  products: Product[]
+  private isLoading: Boolean = true
+  private products: Product[]
+  private productsToShow: Product[]
   searchQuery: any
-  productsToShow: Product[]
   constructor(private route: ActivatedRoute, private brandService: BrandService) { }
 
   ngOnInit() {
@@ -21,19 +22,11 @@ export class BrandProductsListComponent implements OnInit {
       this.brandService.getBrandProducts(brandId).subscribe(products => {
         this.products = products
         this.productsToShow = products
+        this.isLoading = false
         console.log(this.products)
       })
-      // this.products = this.brandService.getBrandProducts(brandId)
     })
   }
- 
-  // ngOnChanges(changes: SimpleChanges) {
-  //   console.log(changes)
-  // }
-
-  // ngDoCheck() {
-  //   console.log(this.searchQuery)
-  // }
 
   updateQuery(event) {
     console.log(event)

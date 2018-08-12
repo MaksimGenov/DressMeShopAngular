@@ -6,6 +6,7 @@ import servicesConfig from '../services-config';
 import { Product } from '../../models/Product';
 
 const DB_URL = servicesConfig.DB_URL
+const collection = servicesConfig.collections.categories
 
 @Injectable()
 export class CategoryService {
@@ -13,12 +14,12 @@ export class CategoryService {
   constructor(private http: HttpClient) { }
 
   getAllCategories(): Observable<Category[]> {
-    const url = `${DB_URL}/categories/all`
+    const url = `${DB_URL}/${collection}/all`
     return this.http.get<Category[]>(url)
   }
 
   getCategoryProducts(id: String): Observable<Product[]> {
-    const url = `${DB_URL}/categories/${id}/products`
+    const url = `${DB_URL}/${collection}/${id}/products`
     return this.http.get<Product[]>(url)
   }
 
@@ -26,7 +27,7 @@ export class CategoryService {
     let data = new FormData()
     data.append('name', name)
     data.append('image', image)
-    const url = `${DB_URL}/categories/create`
+    const url = `${DB_URL}/${collection}/create`
     return this.http.post<Category>(url, data)
   }
 }

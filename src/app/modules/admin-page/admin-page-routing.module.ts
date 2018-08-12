@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+
 import { AdminMainComponent } from './components/admin-main/admin-main.component';
-import { AddBrandFormComponent } from '../forms/components/add-brand-form/add-brand-form.component';
-import { AddProductFormComponent } from '../forms/components/add-product-form/add-product-form.component';
-import { AddCategoryFormComponent } from '../forms/components/add-category-form/add-category-form/add-category-form.component';
+import { AddBrandFormComponent } from './components/add-brand-form/add-brand-form.component';
+import { AddProductFormComponent } from './components/add-product-form/add-product-form.component';
+import { AddCategoryFormComponent } from './components/add-category-form/add-category-form.component';
 
 const routes: Routes = [
   {

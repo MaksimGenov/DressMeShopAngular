@@ -8,6 +8,7 @@ import { Link } from '../../../../models/Link';
 })
 export class NavLinkComponent implements OnInit {
   @Input() navLink: Link
+  @Input() className: string
   constructor() { }
 
   ngOnInit() {

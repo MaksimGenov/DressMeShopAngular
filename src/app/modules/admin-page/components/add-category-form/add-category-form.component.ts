@@ -1,27 +1,25 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
-import { ImageService } from '../../../../../services/image-service/image.service';
-import { CategoryService } from '../../../../../services/category-service/category.service';
+import { Component } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { CategoryService } from '../../../../services/category-service/category.service';
+import { ImageService } from '../../../../services/image-service/image.service';
 
 @Component({
   selector: 'app-add-category-form',
   templateUrl: './add-category-form.component.html',
   styleUrls: ['./add-category-form.component.css']
 })
-export class AddCategoryFormComponent implements OnInit {
+export class AddCategoryFormComponent {
   image: File
   imagePreviewUrl: string
   addCategoryForm = new FormGroup({
-    name: new FormControl(''),
-    file: new FormControl(null)
+    name: new FormControl('', Validators.required),
+    file: new FormControl(null, Validators.required)
   })
   constructor(private categoryService: CategoryService, private imageService: ImageService) { }
 
-  ngOnInit() { }
-
   get name() { return this.addCategoryForm.get('name') }
 
-  get file() { return this.addCategoryForm.get('image') }
+  get file() { return this.addCategoryForm.get('file') }
 
   onSubmit(event) {
     let name: string = this.name.value

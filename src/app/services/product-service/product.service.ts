@@ -5,6 +5,7 @@ import { Product } from '../../models/Product';
 import servicesConfig from '../services-config'
 
 const DB_BASE_URL = servicesConfig.DB_URL
+const collection = servicesConfig.collections.products
 
 @Injectable()
 export class ProductService {
@@ -23,8 +24,13 @@ export class ProductService {
       data.append('image' + index, images[index])
     }
 
-    const url = `${DB_BASE_URL}/products/create`
+    const url = `${DB_BASE_URL}/${collection}/create`
    
     return this.http.post<Product>(url, data)
+  }
+
+  getProduct(id: string): Observable<Product> {
+    const url = `${DB_BASE_URL}/${collection}/get/${id}`
+    return this.http.get<Product>(url)
   }
 }

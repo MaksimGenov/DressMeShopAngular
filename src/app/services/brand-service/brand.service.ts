@@ -6,6 +6,7 @@ import { Product } from '../../models/Product';
 import servicesConfig from '../services-config'
 
 const DB_BASE_URL = servicesConfig.DB_URL
+const collection = servicesConfig.collections.brands
 
 @Injectable()
 export class BrandService {
@@ -13,12 +14,12 @@ export class BrandService {
   constructor(private http: HttpClient) { }
 
   getAllBrands(): Observable<Brand[]> {
-    const url = `${DB_BASE_URL}/brands/all`
+    const url = `${DB_BASE_URL}/${collection}/all`
     return this.http.get<Brand[]>(url)
   }
 
   getBrandProducts(id: String): Observable<Product[]> {
-    const url = `${DB_BASE_URL}/brands/${id}/products`
+    const url = `${DB_BASE_URL}/${collection}/${id}/products`
     return this.http.get<Product[]>(url)
   }
 
@@ -28,7 +29,7 @@ export class BrandService {
     data.append('description', description)
     data.append('image', image)
 
-    const url = `${DB_BASE_URL}/brands/create`
+    const url = `${DB_BASE_URL}/${collection}/create`
     return this.http.post<Brand>(url, data)
   }
 }

@@ -8,7 +8,8 @@ import { LinkGeneratorService } from '../../../../services/link-generator/link-g
   styleUrls: ['./brands-main.component.css']
 })
 export class BrandsMainComponent implements OnInit {
-  navLinks: Link[]
+  private isLoading: Boolean = true
+  private navLinks: Link[]
   constructor(
     private brandService: BrandService,
     private linkGeneratorService: LinkGeneratorService
@@ -19,6 +20,7 @@ export class BrandsMainComponent implements OnInit {
       this.navLinks = brands.map(brand => {
         return this.linkGeneratorService.generateLink(brand, "", "/products")
       })
+      this.isLoading = false
     })
   }
 

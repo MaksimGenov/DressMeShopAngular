@@ -8,11 +8,15 @@ import { BrandService } from '../../../../services/brand-service/brand.service';
   styleUrls: ['./brands-list.component.css']
 })
 export class BrandsListComponent implements OnInit {
-  brands: Brand[]
+  private isLoading: Boolean = true
+  private brands: Brand[]
   constructor(private brandService: BrandService) { }
 
   ngOnInit() {
-    this.brandService.getAllBrands().subscribe(brands => this.brands = brands)
+    this.brandService.getAllBrands().subscribe(brands => {
+      this.brands = brands
+      this.isLoading = false
+    })
   }
 
 }

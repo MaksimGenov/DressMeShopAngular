@@ -1,5 +1,16 @@
-.nav-link-box {
-  font-size: x-large;
+.nav-vertical-link {
+  font-size: large;
+  font-weight: bold;
+  color: black;
+  text-decoration: none;
+  border-radius: 5px;
+  background-color:darkgrey;
+  margin: 5px;
+  text-align: center
+}
+
+.nav-horizontal-link {
+  font-size: normal;
   font-weight: bold;
   color: black;
   text-decoration: none;
