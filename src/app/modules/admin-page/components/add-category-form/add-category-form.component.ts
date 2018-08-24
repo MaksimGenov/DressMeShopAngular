@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { CategoryService } from '../../../../services/category-service/category.service';
 import { ImageService } from '../../../../services/image-service/image.service';
+import { NotificationService } from '../../../../services/notification-service/notification.service';
 
 @Component({
   selector: 'app-add-category-form',
@@ -15,20 +16,28 @@ export class AddCategoryFormComponent {
     name: new FormControl('', Validators.required),
     file: new FormControl(null, Validators.required)
   })
-  constructor(private categoryService: CategoryService, private imageService: ImageService) { }
+  constructor(
+    private categoryService: CategoryService,
+    private imageService: ImageService,
+    private notificationService: NotificationService
+  ) { }
 
   get name() { return this.addCategoryForm.get('name') }
 
   get file() { return this.addCategoryForm.get('file') }
 
-  onSubmit(event) {
+  onSubmit() {
     let name: string = this.name.value
     this.categoryService.createCategory(name, this.image)
-    .subscribe(brand => {
-      this.image = null
-      this.imagePreviewUrl = null
-      this.addCategoryForm.reset()
-    })
+      .subscribe(
+        brand => {
+        this.image = null
+        this.imagePreviewUrl = null
+        this.addCategoryForm.reset()
+        this.notificationService.pop('success', "Category added successfully!")
+      },
+      error => this.notificationService.pop('error', error.error)
+    )
   }
 
   async onFileChange(event) {

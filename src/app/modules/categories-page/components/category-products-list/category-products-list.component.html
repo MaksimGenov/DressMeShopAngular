@@ -1,1 +1,2 @@
-<app-products-list [products]='products'></app-products-list>
+<app-spinner *ngIf='isLoading'></app-spinner>
+<app-products-list *ngIf='!isLoading' [products]='products'></app-products-list>

@@ -1,0 +1,30 @@
+import { Injectable } from '@angular/core';
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, CanLoad, Router, Route } from '@angular/router';
+import { Observable } from 'rxjs';
+import { AuthService } from '../services/auth-service/auth.service';
+import { NotificationService } from '../services/notification-service/notification.service';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class UserGuard implements CanLoad {
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private notificationService: NotificationService
+  ) { }
+
+  canLoad(route: Route): Observable<boolean> | Promise<boolean> | boolean {
+    return this.checkRole()
+  }
+
+  checkRole(): boolean {
+    console.log(this.router)
+    if (this.authService.isLogged()) {
+      return true
+    }
+
+    this.router.navigate(['home'])
+    this.notificationService.pop('error', "You are not logged!")
+  }
+}

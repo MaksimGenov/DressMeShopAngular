@@ -17,13 +17,5 @@ export class AppComponent {
       name: 'Categories',
       url: 'categories'
     },
-    {
-      name: 'Admin',
-      url: 'admin'
-    },
-    {
-      name: 'Home',
-      url: ''
-    },
   ]
 }

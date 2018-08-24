@@ -13,6 +13,8 @@ import { BrandService } from '../../services/brand-service/brand.service';
 import { CategoryService } from '../../services/category-service/category.service';
 import { ImageService } from '../../services/image-service/image.service';
 import { ProductService } from '../../services/product-service/product.service';
+import { EditProductFormComponent } from './components/edit-product-form/edit-product-form.component';
+import { EditBrandFormComponent } from './components/edit-brand-form/edit-brand-form.component';
 
 @NgModule({
   imports: [
@@ -26,7 +28,9 @@ import { ProductService } from '../../services/product-service/product.service';
     AdminMainComponent,
     AddCategoryFormComponent,
     AddBrandFormComponent,
-    AddProductFormComponent
+    AddProductFormComponent,
+    EditProductFormComponent,
+    EditBrandFormComponent
   ],
   providers: [
     BrandService,

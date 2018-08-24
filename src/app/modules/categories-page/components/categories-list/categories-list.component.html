@@ -1,0 +1,8 @@
+<app-spinner *ngIf='isLoading'></app-spinner>
+<div *ngIf='!isLoading' class="container-fluid">
+  <div class="row m-auto">
+    <div class="col-md-2 p-0 m-2" *ngFor='let category of categories'>
+      <app-category-card [category]='category'></app-category-card>
+    </div>
+  </div>
+</div>

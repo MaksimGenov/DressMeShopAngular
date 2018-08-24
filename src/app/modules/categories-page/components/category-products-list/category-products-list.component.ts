@@ -9,6 +9,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./category-products-list.component.css']
 })
 export class CategoryProductsListComponent implements OnInit {
+  isLoading: boolean = true
   products: Product[]
   constructor(
     private categoryService: CategoryService,
@@ -18,7 +19,11 @@ export class CategoryProductsListComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params => {
       const categoryId = params.id
-      this.categoryService.getCategoryProducts(categoryId).subscribe(products => this.products = products)
+      this.categoryService.getCategoryProducts(categoryId)
+        .subscribe(products => {
+          this.products = products
+          this.isLoading = false
+        })
     })
   }
 

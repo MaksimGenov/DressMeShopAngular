@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <div class="container-fluid">
-    <form [formGroup]='addBrandForm' (ngSubmit)='onSubmit($event)'>
+    <form [formGroup]='form' (ngSubmit)='onSubmit($event)'>
       <div class="form-group">
         <label>Name</label>
         <input type="text" class="form-control" formControlName='name' placeholder="Enter name...">
@@ -17,7 +17,7 @@
         <img class="col-md-2 preview-img" src="{{imagePreviewUrl}}" />
         <div class="alert alert-danger" *ngIf='file.invalid && file.touched'>Image is required!</div>
       </div>
-      <button type="submit" [disabled]='!addBrandForm.valid' class="btn btn-primary btn-block">Add Brand</button>
+      <button type="submit" [disabled]='form.invalid' class="btn btn-primary btn-block">Add Brand</button>
     </form>
   </div>
 </div>

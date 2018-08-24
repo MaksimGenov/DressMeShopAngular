@@ -1,4 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+  background-color: lightblue;
+}
+
 .preview-img {
   max-width: 100%;
   max-height: 50px;
@@ -7,4 +11,18 @@
 .element-link a {
   text-decoration: none !important;
   color: black;
+}
+
+#notification {
+  position: sticky;
+  top: 5rem;
+  right: 50px;
+  float: right;
+  z-index: 1;
+  max-width: 400px;
+  padding: 0.5rem;
+  border-radius: 5px;
+  font-size: medium;
+  font-weight: bolder;
+  color: white;
 }

@@ -1,0 +1,14 @@
+<div appZoom class="container-fluid element-link brand-card">
+  <a routerLink="{{category._id}}/products">
+    <div class="col-md-12 p-0">
+      <img *ngIf='category.image' src="{{category.image.url}}" alt="">
+    </div>
+    <div class="d-flex justify-content-center">
+      {{category.name | titlecase}}
+    </div>
+  </a>
+  <div *ngIf='isAdmin' class="d-flex justify-content-center">
+    <a routerLink='/admin/categories/edit/{{category._id}}' class="btn btn-warning">Edit</a>
+    <button type="button" class="btn btn-danger" (click)='deleteCategory()'>Delete</button>
+  </div>
+</div>

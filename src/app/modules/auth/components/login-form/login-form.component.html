@@ -1,0 +1,35 @@
+<div class="container-fluid col-md-4">
+  <form [formGroup]='form' (ngSubmit)='onSubmit()'>
+
+    <div class="form-group">
+      <label>Username</label>
+      <input type="text" class="form-control" formControlName='username' placeholder="Enter username...">
+      <div class="alert-danger p-1 mt-1 rounded" *ngIf='username.invalid && username.touched'>
+        <small *ngIf='username.errors.required'>
+          Username is required!
+        </small>
+        <small *ngIf='username.errors.pattern'>
+          Username must be between 3 and 20 symbols long, start with latin letter and contain only digits and latin letters.
+        </small>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Password</label>
+      <input type="password" class="form-control" formControlName='password' placeholder="Enter passsword...">
+      <div *ngIf='password.invalid && password.touched' class="alert-danger p-1 mt-1 rounded">
+        <small *ngIf='password.errors.required'>
+          Password is required!
+        </small>
+        <small *ngIf='password.errors.pattern'>
+          The password must be between 6 and 20 symbols long, contain uppercase, lowercase and digit.
+        </small>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <button type="submit" [disabled]='form.invalid' class="btn btn-success">SignIn</button>
+    </div>
+
+  </form>
+</div>

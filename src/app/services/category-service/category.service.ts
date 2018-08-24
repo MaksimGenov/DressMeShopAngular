@@ -1,33 +1,47 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Category } from '../../models/Category';
-import servicesConfig from '../services-config';
 import { Product } from '../../models/Product';
-
-const DB_URL = servicesConfig.DB_URL
-const collection = servicesConfig.collections.categories
+import { Fetcher } from '../../utils/Fetcher';
+import { NotificationService } from '../notification-service/notification.service';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class CategoryService {
+  private collection: string = 'categories'
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private fetcher: Fetcher,
+    private notificationService: NotificationService,
+    private router: Router
+  ) { }
 
   getAllCategories(): Observable<Category[]> {
-    const url = `${DB_URL}/${collection}/all`
-    return this.http.get<Category[]>(url)
+    console.log('fire')
+    return this.fetcher.get<Category[]>(this.collection, 'all')
   }
 
   getCategoryProducts(id: String): Observable<Product[]> {
-    const url = `${DB_URL}/${collection}/${id}/products`
-    return this.http.get<Product[]>(url)
+    const endpoint = `${id}/products`
+    return this.fetcher.get<Product[]>(this.collection, endpoint)
   }
 
   createCategory(name: string, image: File) {
     let data = new FormData()
     data.append('name', name)
     data.append('image', image)
-    const url = `${DB_URL}/${collection}/create`
-    return this.http.post<Category>(url, data)
+
+    return this.fetcher.post<Category>(this.collection, 'create', data)
+  }
+
+  delete(id: string, element) {
+    this.fetcher.delete(this.collection, id)
+      .subscribe(
+        () => {
+          element.nativeElement.parentElement.removeChild(element.nativeElement)
+          this.notificationService.pop('success', 'Category deleted successfully!')
+        },
+        error => this.notificationService.pop('error', error.error)
+      )
   }
 }

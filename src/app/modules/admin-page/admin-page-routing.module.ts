@@ -5,6 +5,8 @@ import { AdminMainComponent } from './components/admin-main/admin-main.component
 import { AddBrandFormComponent } from './components/add-brand-form/add-brand-form.component';
 import { AddProductFormComponent } from './components/add-product-form/add-product-form.component';
 import { AddCategoryFormComponent } from './components/add-category-form/add-category-form.component';
+import { EditProductFormComponent } from './components/edit-product-form/edit-product-form.component';
+import { EditBrandFormComponent } from './components/edit-brand-form/edit-brand-form.component';
 
 const routes: Routes = [
   {
@@ -12,7 +14,9 @@ const routes: Routes = [
     children: [
       {path: 'addBrand', component: AddBrandFormComponent},
       {path: 'addProduct', component: AddProductFormComponent},
-      {path: 'addCategory', component: AddCategoryFormComponent}
+      {path: 'editProduct/:id', component: EditProductFormComponent},
+      {path: 'addCategory', component: AddCategoryFormComponent},
+      {path: 'brands/edit/:id', component: EditBrandFormComponent}
     ]
   }
 ];

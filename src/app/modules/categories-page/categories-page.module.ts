@@ -9,6 +9,7 @@ import { CategoryProductsListComponent } from './components/category-products-li
 
 import { CategoryService } from '../../services/category-service/category.service';
 import { LinkGeneratorService } from '../../services/link-generator/link-generator.service';
+import { CategoryCardComponent } from './components/category-card/category-card.component';
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import { LinkGeneratorService } from '../../services/link-generator/link-generat
   declarations: [
     CategoriesMainComponent,
     CategoriesListComponent,
-    CategoryProductsListComponent
+    CategoryProductsListComponent,
+    CategoryCardComponent
   ],
   providers: [
     CategoryService,

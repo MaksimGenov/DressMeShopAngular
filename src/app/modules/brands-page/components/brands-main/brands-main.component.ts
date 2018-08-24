@@ -8,8 +8,9 @@ import { LinkGeneratorService } from '../../../../services/link-generator/link-g
   styleUrls: ['./brands-main.component.css']
 })
 export class BrandsMainComponent implements OnInit {
-  private isLoading: Boolean = true
-  private navLinks: Link[]
+  isLoading: Boolean = true
+  navLinks: Link[]
+
   constructor(
     private brandService: BrandService,
     private linkGeneratorService: LinkGeneratorService

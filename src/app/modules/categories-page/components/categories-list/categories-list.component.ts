@@ -9,14 +9,16 @@ import { Category } from '../../../../models/Category';
   styleUrls: ['./categories-list.component.css']
 })
 export class CategoriesListComponent implements OnInit {
+  isLoading: boolean = true
   categories: Category[]
-  constructor(
-    private categoryService: CategoryService,
-    private route: ActivatedRoute
-  ) { }
+  constructor(private categoryService: CategoryService) { }
 
   ngOnInit() {
-    this.categoryService.getAllCategories().subscribe(categories => this.categories = categories)
+    this.categoryService.getAllCategories()
+    .subscribe(categories => {
+      this.categories = categories
+      this.isLoading = false
+    })
   }
 
 }
