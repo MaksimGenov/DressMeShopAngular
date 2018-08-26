@@ -1,4 +1,8 @@
 export interface Link {
   name: string,
-  url: string
+  url: string,
+  protection: {
+    admin: boolean,
+    user: boolean
+  }
 }

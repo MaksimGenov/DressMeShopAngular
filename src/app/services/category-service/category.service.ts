@@ -44,4 +44,22 @@ export class CategoryService {
         error => this.notificationService.pop('error', error.error)
       )
   }
+
+  getById(id: string) {
+    return this.fetcher.get<Category>(this.collection, id)
+  }
+
+  edit(id: string, name: string, image: File) {
+    let data = new FormData()
+    data.append('name', name)
+    data.append('image', image)
+    this.fetcher.put(this.collection, id, data)
+      .subscribe(
+        category => {
+          this.router.navigateByUrl('/categories')
+          this.notificationService.pop('success', 'Brand updated successuflly!')
+        },
+        error => this.notificationService.pop('error', error.error)
+      )
+  }
 }

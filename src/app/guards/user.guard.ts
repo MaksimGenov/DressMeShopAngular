@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, CanLoad, Router, Route } from '@angular/router';
+import { CanLoad, Router, Route } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthService } from '../services/auth-service/auth.service';
 import { NotificationService } from '../services/notification-service/notification.service';
@@ -19,7 +19,6 @@ export class UserGuard implements CanLoad {
   }
 
   checkRole(): boolean {
-    console.log(this.router)
     if (this.authService.isLogged()) {
       return true
     }

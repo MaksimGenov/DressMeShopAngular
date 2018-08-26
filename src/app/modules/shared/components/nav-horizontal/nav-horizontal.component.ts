@@ -6,11 +6,35 @@ import { Link } from '../../../../models/Link';
   templateUrl: './nav-horizontal.component.html',
   styleUrls: ['./nav-horizontal.component.css']
 })
-export class NavHorizontalComponent implements OnInit {
-  @Input() navLinks: Link[]
+export class NavHorizontalComponent {
+  private navLinks: Link[] = [
+    {
+      name: 'Brands',
+      url: 'brands',
+      protection: null
+    },
+    {
+      name: 'Categories',
+      url: 'categories',
+      protection: null
+    },
+    {
+      name: 'Admin',
+      url: '/admin',
+      protection: {
+        admin: true,
+        user: false
+      }
+    },
+    {
+      name: 'Cart',
+      url: '/user/cart',
+      protection: {
+        admin: false,
+        user: true
+      }
+    }
+  ]
   constructor() { }
-
-  ngOnInit() {
-  }
 
 }

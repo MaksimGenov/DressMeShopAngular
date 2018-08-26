@@ -6,11 +6,7 @@ import { Link } from '../../../../models/Link';
   templateUrl: './nav-vertical.component.html',
   styleUrls: ['./nav-vertical.component.css']
 })
-export class NavVerticalComponent implements OnInit {
+export class NavVerticalComponent {
   @Input() navLinks: Link[]
   constructor() { }
-
-  ngOnInit() {
-  }
-
 }

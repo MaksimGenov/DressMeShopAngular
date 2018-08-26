@@ -15,6 +15,7 @@ import { ImageService } from '../../services/image-service/image.service';
 import { ProductService } from '../../services/product-service/product.service';
 import { EditProductFormComponent } from './components/edit-product-form/edit-product-form.component';
 import { EditBrandFormComponent } from './components/edit-brand-form/edit-brand-form.component';
+import { EditCategoryFormComponent } from './components/edit-category-form/edit-category-form.component';
 
 @NgModule({
   imports: [
@@ -30,7 +31,8 @@ import { EditBrandFormComponent } from './components/edit-brand-form/edit-brand-
     AddBrandFormComponent,
     AddProductFormComponent,
     EditProductFormComponent,
-    EditBrandFormComponent
+    EditBrandFormComponent,
+    EditCategoryFormComponent
   ],
   providers: [
     BrandService,

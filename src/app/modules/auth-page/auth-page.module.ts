@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { AuthRoutingModule } from './auth-routing.module';
+import { AuthPageRoutingModule } from './auth-page-routing.module';
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { AuthService } from '../../services/auth-service/auth.service';
 import { RegisterFromComponent } from './components/register-from/register-from.component';
@@ -10,7 +10,7 @@ import { RegisterFromComponent } from './components/register-from/register-from.
 @NgModule({
   imports: [
     CommonModule,
-    AuthRoutingModule,
+    AuthPageRoutingModule,
     FormsModule,
     ReactiveFormsModule
   ],
@@ -22,4 +22,4 @@ import { RegisterFromComponent } from './components/register-from/register-from.
     AuthService
   ]
 })
-export class AuthModule { }
+export class AuthPageModule { }

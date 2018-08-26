@@ -11,6 +11,6 @@ export class LinkGeneratorService {
 
   generateLink(model: LinkableModel, prefix: string, suffix: string): Link {
     const url = `${prefix}${model._id}${suffix}`
-    return {name: model.name, url}
+    return {name: model.name, url, protection: null}
   }
 }

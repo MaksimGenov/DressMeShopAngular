@@ -8,14 +8,14 @@ import { Link } from './models/Link';
 })
 export class AppComponent {
   title = 'DressMeShop';
-  private navLinks: Link[] = [
-    {
-      name: 'Brands',
-      url: 'brands'
-    },
-    {
-      name: 'Categories',
-      url: 'categories'
-    },
-  ]
+  // private navLinks: Link[] = [
+  //   {
+  //     name: 'Brands',
+  //     url: 'brands'
+  //   },
+  //   {
+  //     name: 'Categories',
+  //     url: 'categories'
+  //   },
+  // ]
 }

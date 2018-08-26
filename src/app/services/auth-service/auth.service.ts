@@ -51,7 +51,7 @@ export class AuthService {
     localStorage.setItem('token', user.token)
     localStorage.setItem('username', user.username)
     localStorage.setItem('cartId', user.cartId)
-    this.location.back()
+    this.router.navigateByUrl('/home')
     this.notificationService.pop('success', `Welcome, ${user.username}!`)
   }
 
@@ -66,7 +66,7 @@ export class AuthService {
   }
 
   get username(): string {
-    return localStorage.getItem('username') || 'none'
+    return localStorage.getItem('username')
   }
 
   get cartId(): string {

@@ -12,10 +12,7 @@ export class CartComponent implements OnInit {
   constructor(private cartService: CartService) { }
 
   ngOnInit() {
-    this.cartService.getCart().subscribe(cart => {
-      console.log(cart)
-      this.cart = cart
-    })
+    this.cartService.getCart().subscribe(cart => this.cart = cart)
   }
 
   get products() {
@@ -32,7 +29,6 @@ export class CartComponent implements OnInit {
 
   removeProduct(event) {
     const productId = event.target.value
-    console.log(productId)
     this.cartService.removeProduct(productId)
     this.products = this.products.filter(product => product._id !== productId)
   }

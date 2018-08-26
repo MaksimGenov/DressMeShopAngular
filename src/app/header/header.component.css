@@ -1,3 +1,7 @@
 .logout-btn {
   cursor: pointer;
 }
+
+.position-right {
+  float: left;
+}

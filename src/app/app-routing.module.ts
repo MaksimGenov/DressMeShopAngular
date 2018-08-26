@@ -11,7 +11,7 @@ const routes: Routes = [
   {path: 'all', loadChildren: './modules/all-products-page/all-products-page.module#AllProductsPageModule'},
   {path: 'categories', loadChildren: './modules/categories-page/categories-page.module#CategoriesPageModule'},
   {path: 'admin', canLoad: [AdminGuard], loadChildren: './modules/admin-page/admin-page.module#AdminPageModule'},
-  {path: 'auth', loadChildren: './modules/auth/auth.module#AuthModule'},
+  {path: 'auth', loadChildren: './modules/auth-page/auth-page.module#AuthPageModule'},
   {path: 'user', canLoad: [UserGuard], loadChildren: './modules/profile-page/profile-page.module#ProfilePageModule' },
   {path: 'home', loadChildren: './modules/home/home.module#HomeModule'},
 ]
