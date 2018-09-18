@@ -17,7 +17,6 @@ export class CategoryService {
   ) { }
 
   getAllCategories(): Observable<Category[]> {
-    console.log('fire')
     return this.fetcher.get<Category[]>(this.collection, 'all')
   }
 
