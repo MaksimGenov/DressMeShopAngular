@@ -23,7 +23,6 @@ export class AdminGuard implements CanLoad {
   }
 
   checkRole(): boolean {
-    console.log(this.router)
     if (this.authService.isAdmin()) {
       return true
     }
