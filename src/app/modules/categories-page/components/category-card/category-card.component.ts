@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ElementRef, OnDestroy } from '@angular/core';
+import { Component, Input, ElementRef } from '@angular/core';
 import { Category } from '../../../../models/Category';
 import { AuthService } from '../../../../services/auth-service/auth.service';
 import { CategoryService } from '../../../../services/category-service/category.service';

@@ -8,8 +8,8 @@ import { Image } from '../../../../models/Image';
 })
 export class CarouselComponent {
   @Input() 
-  private images: Image[]
-  private currentSlide: number = 0
+  images: Image[]
+  currentSlide: number = 0
   constructor() { }
 
   next() {

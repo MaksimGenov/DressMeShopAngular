@@ -8,7 +8,7 @@ import { AuthService } from '../../../../services/auth-service/auth.service';
   styleUrls: ['./login-form.component.css']
 })
 export class LoginFormComponent {
-  private form: FormGroup
+  form: FormGroup
 
   constructor(private authService: AuthService) {
     this.form = new FormGroup({

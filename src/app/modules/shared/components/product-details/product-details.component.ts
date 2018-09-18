@@ -11,7 +11,7 @@ import { AuthService } from '../../../../services/auth-service/auth.service';
   styleUrls: ['./product-details.component.css']
 })
 export class ProductDetailsComponent implements OnInit {
-  private product: Product
+  product: Product
   constructor(
     private route: ActivatedRoute,
     private productService: ProductService,

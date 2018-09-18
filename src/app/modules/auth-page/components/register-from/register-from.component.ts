@@ -11,7 +11,7 @@ import { passwordsMatcher } from './validators/passwords-matcher.validator';
 export class RegisterFromComponent implements OnInit {
   private usernamePattern: RegExp = /^[a-zA-Z]\w{2,20}$/
   private passwordPattern: RegExp = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{6,20}$/
-  private form: FormGroup
+  form: FormGroup
 
   constructor(private authService: AuthService) { }
 

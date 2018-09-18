@@ -15,12 +15,12 @@ import { NotificationService } from '../../../../services/notification-service/n
   styleUrls: ['./add-product-form.component.css']
 })
 export class AddProductFormComponent implements OnInit {
-  private availableCategories$: Observable<Category[]>
-  private availableBrands$: Observable<Brand[]>
-  private images: File[] = []
-  private imagesPreviewUrl: string[] = []
-  private selectedCategories: string[] = []
-  private addProductForm: FormGroup
+  availableCategories$: Observable<Category[]>
+  availableBrands$: Observable<Brand[]>
+  images: File[] = []
+  imagesPreviewUrl: string[] = []
+  selectedCategories: string[] = []
+  addProductForm: FormGroup
 
   constructor(
     private brandService: BrandService,

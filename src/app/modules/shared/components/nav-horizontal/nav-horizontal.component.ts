@@ -7,7 +7,7 @@ import { Link } from '../../../../models/Link';
   styleUrls: ['./nav-horizontal.component.css']
 })
 export class NavHorizontalComponent {
-  private navLinks: Link[] = [
+  navLinks: Link[] = [
     {
       name: 'Brands',
       url: 'brands',

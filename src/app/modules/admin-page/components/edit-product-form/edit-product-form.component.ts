@@ -16,13 +16,13 @@ import { Location } from '@angular/common';
   styleUrls: ['./edit-product-form.component.css']
 })
 export class EditProductFormComponent implements OnInit {
-  private productId: string
-  private form: FormGroup
-  private availableBrands$: Observable<Brand[]>
-  private availableCategories$: Observable<Category[]>
-  private selectedCategories: string[] = []
-  private imagesPreviewUrl: string[] = []
-  private images: File[] = []
+  productId: string
+  form: FormGroup
+  availableBrands$: Observable<Brand[]>
+  availableCategories$: Observable<Category[]>
+  selectedCategories: string[] = []
+  imagesPreviewUrl: string[] = []
+  images: File[] = []
   
   constructor(
     private route: ActivatedRoute,
