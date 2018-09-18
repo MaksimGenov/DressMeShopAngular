@@ -73,7 +73,7 @@ export class AddProductFormComponent implements OnInit {
           this.images = [];
           this.selectedCategories = [];
           this.imagesPreviewUrl = [];
-          this.notificationService.pop('success', 'Products created successfully!');
+          this.notificationService.pop('success', 'Product created successfully!');
         },
         error => {
           console.log(error)
