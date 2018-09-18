@@ -54,7 +54,7 @@
     <div class="form-group col-md-12 p-0">
       <label>Images</label>
       <input type="file" class="form-control" formControlName='files' multiple (change)='onFileChange($event)'>
-      <div class="alert alert-danger" *ngIf='images.invalid && images.touched'>Images are required!</div>
+      <!-- <div class="alert alert-danger" *ngIf='images.invalid && images.touched'>Images are required!</div> -->
       <div *ngIf='imagesPreviewUrl' class="row m-auto">
         <div *ngFor='let url of imagesPreviewUrl' class="col-md-2 p-0 m-1">
           <img class="preview-img" src="{{url}}" />
