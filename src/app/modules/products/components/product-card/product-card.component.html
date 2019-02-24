@@ -1,0 +1,22 @@
+<div appZoom class="container-fluid p-0 element-link">
+  <a routerLink="/products/{{product.id}}" class="">
+    <div *ngIf='product.images[0]' class="product-card-img-container">
+      <app-img-with-spinner 
+        spinnerWidth="30px"
+        spinnerHeight="30px"
+        src="{{product.images[0].url}}"
+      ></app-img-with-spinner>
+    </div>
+    <div class="p-2">
+      <div>
+        <small>{{product.brand.name | titlecase}}</small>
+      </div>
+      <div>
+        <span>{{product.model | titlecase}}</span>
+      </div>
+      <div>
+        <small>{{product.price}} $</small>
+      </div>
+    </div>
+  </a>
+</div>

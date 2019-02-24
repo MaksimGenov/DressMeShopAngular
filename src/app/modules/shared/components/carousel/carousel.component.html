@@ -1,8 +1,12 @@
 <div class="container-fluid">
-  <div class="col-md-12">
-    <img class="carousel-img" src="{{images[currentSlide].url}}">
+  <div class="carousel-img-container">
+      <app-img-with-spinner 
+      spinnerWidth="60px"
+      spinnerHeight="60px"
+      src="{{images[currentSlide].url}}"
+    ></app-img-with-spinner>
   </div>
-  <div class="row d-flex justify-content-center">
+  <div class="d-flex justify-content-center">
     <button type="button" class="btn btn-primary m-2" (click)='prev()'>Previous</button>
     <button type="button" class="btn btn-primary m-2" (click)='next()'>Next</button>
   </div>

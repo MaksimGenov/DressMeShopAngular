@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-spinner',
@@ -6,7 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./spinner.component.css']
 })
 export class SpinnerComponent {
-
-  constructor() { }
-
+  @Input() width: string
+  @Input() height: string
 }

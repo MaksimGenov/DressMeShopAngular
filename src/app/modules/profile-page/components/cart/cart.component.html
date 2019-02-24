@@ -1,8 +1,8 @@
 
-<div *ngIf='cart' class="">
+<div *ngIf='orderItems' class="">
 
-  <div *ngIf='products.length === 0'>There are no items in the cart.</div>
-  <div *ngIf='products.length > 0' class="container-fluid">
+  <div *ngIf='orderItems.length === 0'>There are no items in the cart.</div>
+  <div *ngIf='orderItems.length > 0' class="container-fluid">
     <div class="row cart-header">
       <div class="col-md-1">#</div>
       <div class="col-md-2"></div>
@@ -10,23 +10,27 @@
       <div class="col-md-4 d-flex justify-content-end">Price</div>
     </div>
 
-    <div class="row cart-product" *ngFor='let product of products; index as i'>
+    <div class="row cart-product" *ngFor='let orderItem of orderItems; index as i'>
       <div class="col-md-1">{{i + 1}}</div>
       <div class="col-md-2">
-        <img src="{{product.images[0].url}}" alt="">
+        <img src="{{orderItem.product.images[0].url}}" alt="">
       </div>
       <div class="col-md-5">
-        <a routerLink="/product/{{product._id}}">
-          {{product.brand.name | titlecase}} {{product.model | titlecase}}
+        <a routerLink="/products/{{orderItem.product.id}}">
+          {{orderItem.product.brand.name | titlecase}} {{orderItem.product.model | titlecase}}
         </a>
         <br>
-        <span>Color: {{product.color}}</span>
+        <span *ngIf="orderItem.product.color">Color: {{orderItem.product.color}}</span>
         <br>
-        <button type="button" class="btn btn-danger" (click)='removeProduct($event)' value="{{product._id}}">
+        <span>Size: {{orderItem.size.name}}</span>
+        <br>
+        <span>Quantity: {{orderItem.quantity}}</span>
+        <br>
+        <button type="button" class="btn btn-danger" (click)='removeProduct($event)' value="{{orderItem.id}}">
           Remove
         </button>
       </div>
-      <div class="col-md-4 d-flex justify-content-end">{{product.price.toFixed(2)}} $</div>
+      <div class="col-md-4 d-flex justify-content-end">{{orderItem.product.price.toFixed(2)}} $</div>
     </div>
 
     <div class="row d-flex justify-content-end cart-footer">Total: {{total}} $</div>

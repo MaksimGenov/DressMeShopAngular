@@ -1,0 +1,51 @@
+<div class="container-fluid p-0">
+  <form [formGroup]='form' (ngSubmit)='onSubmit()'>
+    <div class="form-group">
+      <label>Brand</label>
+      <app-multiselect-dropdown
+        *ngIf="brandDropDownList"
+        [data]="brandDropDownList"
+        [settings]="brandDropdownSettings"
+        (update)="onBrandSelect($event)"
+        >
+      </app-multiselect-dropdown>
+      <!-- <select class="form-control" formControlName='brand'>
+        <option value="null" disabled="true" [selected]='true'>Select brand...</option>
+        <option *ngFor='let brand of brands' ngValue="{{brand.name}}">{{brand.name}}</option>
+      </select> -->
+    </div>
+    
+    <div class="form-group">
+      <label>Categories</label>
+      <app-multiselect-dropdown
+        *ngIf="categoriesDropdownList" 
+        [data]="categoriesDropdownList"
+        [settings]="categoryDropdownSettings"
+        (update)="onCategorySelect($event)">
+      </app-multiselect-dropdown>
+    </div>
+
+    <div class="form-group">
+      <label>Sizes</label>
+      <app-multiselect-dropdown
+        *ngIf="sizesDropdownList" 
+        [data]="sizesDropdownList"
+        [settings]="sizeDropdownSettings"
+        (update)="onSizeSelect($event)">
+      </app-multiselect-dropdown>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-md-6">
+        <label>Min Price</label>
+        <input type="number" class="form-control" formControlName='minPrice' placeholder="enter Min Price..." required>
+      </div>
+      <div class="col-md-6">
+        <label>Max Price</label>
+        <input type="text" class="form-control" formControlName='maxPrice' placeholder="enter Max Price..." required>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary btn-block">Search</button>
+  </form>
+</div>

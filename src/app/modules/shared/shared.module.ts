@@ -4,17 +4,15 @@ import { RouterModule } from '@angular/router';
 
 import { NavLinkComponent } from './components/nav-link/nav-link.component';
 import { NavVerticalComponent } from './components/nav-vertical/nav-vertical.component';
-import { NavHorizontalComponent } from './components/nav-horizontal/nav-horizontal.component';
-import { ProductsListComponent } from './components/products-list/products-list.component';
-import { ProductCardComponent } from './components/product-card/product-card.component';
-import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { PaginationComponent } from './components/pagination/pagination.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { ZoomDirective } from './directives/zoom/zoom.directive';
-import { SelectedDirective } from './directives/selected.directive';
-import { CartService } from '../../services/cart-service/cart.service';
 import { AuthService } from '../../services/auth-service/auth.service';
+import { ResizerDirective } from './resizer/resizer.directive';
+import { ImgWithSpinnerComponent } from './components/img-with-spinner/img-with-spinner.component';
+import { MultiselectDropdownComponent } from './components/multiselect-dropdown/multiselect-dropdown.component';
+import { ClickOutsideDirective } from './directives/click-outside/click-outside.directive';
 
 @NgModule({
   imports: [
@@ -24,30 +22,29 @@ import { AuthService } from '../../services/auth-service/auth.service';
   declarations: [
     NavLinkComponent,
     NavVerticalComponent,
-    ProductsListComponent,
-    ProductCardComponent,
     PaginationComponent,
-    SelectedDirective,
-    NavHorizontalComponent,
     SpinnerComponent,
     CarouselComponent,
-    ProductDetailsComponent,
     ZoomDirective,
+    ResizerDirective,
+    ImgWithSpinnerComponent,
+    MultiselectDropdownComponent,
+    ClickOutsideDirective
   ],
   providers: [
-    CartService,
     AuthService,
   ],
   exports: [
     NavLinkComponent,
     NavVerticalComponent,
-    ProductsListComponent,
-    ProductCardComponent,
     PaginationComponent,
-    SelectedDirective,
-    NavHorizontalComponent,
     SpinnerComponent,
     ZoomDirective,
+    ResizerDirective,
+    ImgWithSpinnerComponent,
+    CarouselComponent,
+    MultiselectDropdownComponent,
+    ClickOutsideDirective
   ],
 })
 export class SharedModule { }

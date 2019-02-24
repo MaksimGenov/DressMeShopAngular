@@ -1,0 +1,31 @@
+<div class="container-fluid border">
+  <form [formGroup]='form' (ngSubmit)='onSubmit()'>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Color</label>
+        <input type="text" class="form-control" formControlName='name' placeholder="enter name...">
+      </div>
+    </div>
+    <div class="form-row" formArrayName='categories'>
+      <div class="row form-check form-check-inline">
+        <div class="col-md-3 m-1 text-truncate" *ngFor='let category of categories; index as i'>
+          <input type="radio" class="form-check-input" formControlName='{{i}}' value="{{category}}" id='cat-radio-{{i}}'>
+          <label class='form-check-label' for='cat-radio-{{i}}'>{{category}}</label>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="form-row" > -->
+      <div class="form-group row" formGroupName="sizes">
+        <div class="col-md-3 border p-0" *ngFor="let size of sizes; index as i">
+          <div class="row p-0 m-0">
+            <label class="col-md-4 text-right m-0" for="size-form-control{{i}}">{{size}}</label>
+            <input class="form-control small p-0 col-md-6" type="number" id="size-form-control{{i}}" formControlName="{{size}}" placeholder="qty">
+          </div>
+        </div>
+      </div>
+    <!-- </div> -->
+    <div class="form-row">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </form>
+</div>

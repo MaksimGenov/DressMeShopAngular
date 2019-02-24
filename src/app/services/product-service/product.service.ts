@@ -4,6 +4,13 @@ import { Observable } from 'rxjs';
 import { Product } from '../../models/Product';
 import { Fetcher } from '../../utils/Fetcher';
 import { NotificationService } from '../notification-service/notification.service';
+import { HttpResponse, HttpHeaders } from '@angular/common/http';
+import { environment } from 'src/environments/environment'
+import { Page } from 'src/app/models/Page';
+import { ProductCreateDTO } from 'src/app/models/product/ProductCreateDTO';
+import { ProductUpdateDTO } from 'src/app/models/product/ProductUpdateDTO';
+import { FormDataBuilder } from 'src/app/utils/FormDataBuilder/FormDataBuilder';
+import { ProductSearchDTO } from 'src/app/models/product/ProductSearchDTO';
 
 @Injectable()
 export class ProductService {
@@ -11,30 +18,30 @@ export class ProductService {
   constructor(
     private fetcher: Fetcher,
     private location: Location,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    private formDataBuilder: FormDataBuilder
   ) { }
 
-  createProduct(brand: string, model: string, description: string, price: string, color: string, categories: string[], images: File[]): Observable<Product> {
-    let data = new FormData()
-    data.append('model', model)
-    data.append('brand', brand)
-    data.append('description', description)
-    data.append('price', price)
-    data.append('color', color)
-    data.append('categories', JSON.stringify(categories))
-    for (let index = 0; index < images.length; index++) {
-      data.append('image' + index, images[index])
-    }
+  create(product: ProductCreateDTO, images?: File[]): Observable<Product> {
+    product.categories = product.categories.filter(c => c != null && typeof c != 'undefined')
+    let data = this.formDataBuilder.generate({ product: JSON.stringify(product) }, [{ name: 'images', files: images }])
 
-    return this.fetcher.post<Product>(this.collection, 'create', data)
+    const endpoint = this.collection + '/create'
+    const url = environment.apiUrl + endpoint
+    let headers = new HttpHeaders({ 'Content-Type': undefined }) 
+    return this.fetcher.post<Product>(url, data)
   }
 
-  getProduct(id: string): Observable<Product> {
-    return this.fetcher.get<Product>(this.collection, id)
+  get(id: string): Observable<HttpResponse<Product>> {
+    const endpoint = this.collection + '/' + id
+    const url = environment.apiUrl + endpoint
+    return this.fetcher.get<Product>(url)
   }
 
-  deleteProduct(id: string) {
-    this.fetcher.delete(this.collection, id)
+  delete(id: string) {
+    const endpoint = this.collection + '/delete/' + id
+    const url = environment.apiUrl + endpoint
+    this.fetcher.delete(url)
       .subscribe(
         response => {
           this.location.back()
@@ -44,19 +51,12 @@ export class ProductService {
       )
   }
 
-  edit(id: string, brand: string, model: string, description: string, price: string, color: string, categories: string[], images: File[]) {
-    let data = new FormData()
-    data.append('model', model)
-    data.append('brand', brand)
-    data.append('description', description)
-    data.append('price', price)
-    data.append('color', color)
-    data.append('categories', JSON.stringify(categories))
-    for (let index = 0; index < images.length; index++) {
-      data.append('image' + index, images[index])
-    }
+  edit(product: ProductUpdateDTO, images: File[]) {
+    let data = this.formDataBuilder.generate(product, [{ name: 'images', files: images }])
 
-    this.fetcher.put<Product>(this.collection, id, data)
+    const endpoint = this.collection + '/edit'
+    const url = environment.apiUrl + endpoint
+    this.fetcher.put<Product>(url, data)
       .subscribe(
         product => {
           this.location.back()
@@ -64,5 +64,12 @@ export class ProductService {
         },
         error => this.notificationService.pop('error', error.error)
       )
+  }
+
+  search(productSearchDTO: ProductSearchDTO): Observable<Page<Product>> {
+    console.log(productSearchDTO)
+    const endpoint = this.collection + '/search'
+    const url = environment.apiUrl + endpoint
+    return this.fetcher.post<Page<Product>>(url, productSearchDTO);
   }
 }

@@ -1,0 +1,14 @@
+<div appZoom class="element-link">
+  <a routerLink="/products" [queryParams]="{categories: [category.name]}">
+    <div class="category-card-img-container">
+      <app-img-with-spinner src="{{category.image.url}}" spinnerWidth="30px" spinnerHeight="30px" ></app-img-with-spinner>
+    </div>
+    <div class="d-flex justify-content-center">
+      {{category.name | titlecase}}
+    </div>
+  </a>
+  <div *ngIf='isAdmin' class="category-card-admin-controls">
+    <a routerLink='/admin/categories/edit/{{category._id}}' class="btn btn-warning m-1">Edit</a>
+    <button type="button" class="btn btn-danger m-1" (click)='deleteCategory(category._id)'>Delete</button>
+  </div>
+</div>

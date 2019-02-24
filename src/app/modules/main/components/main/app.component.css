@@ -1,0 +1,11 @@
+.main-bg {
+  background-image: url(/assets/Nike_Jordan_Basketball_Experience_Beijing_43_hd_1600.jpg);
+  min-height: 100vh;
+  padding: 50px;
+}
+
+.default-bg {
+ background-color: white;
+ border-radius: 5px;
+ padding: 5px;
+}

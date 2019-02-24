@@ -1,9 +1,10 @@
 import { Image } from "./Image";
 import { Category } from "./Category";
 import { Brand } from "./Brand";
+import { SizeQuantity } from "./SizeQuantity";
 
 export interface Product {
-  _id: string,
+  id: string,
   brand: Brand
   model: string
   images: Image[]
@@ -11,4 +12,5 @@ export interface Product {
   color: string
   price: string
   description: string
+  sizes: SizeQuantity[]
 }

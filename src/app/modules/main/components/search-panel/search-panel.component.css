@@ -1,0 +1,31 @@
+.dropdown {
+  background-color: bisque
+}
+
+.dropdown-content {
+  display: none;
+  background-color: blueviolet
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.triangle-down {
+  width: 0;
+    height: 0;
+    padding-top: 25%;
+    padding-bottom: 25%;
+    padding-left: 25%;
+    overflow: hidden;
+}
+.triangle-down:after {
+  width: 0; 
+    height: 0;
+    margin-top:-500px;
+    margin-left: -500px;
+     
+    border-top: 500px solid transparent;
+    border-bottom: 500px solid transparent;
+    border-left: 500px solid #4679BD;
+}

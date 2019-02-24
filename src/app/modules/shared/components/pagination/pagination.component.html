@@ -1,3 +1,16 @@
-<p>
-  pagination works!
-</p>
+<div class="container">
+    <div class="text-center">
+
+        <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+            <button type="button" [disabled]="pager.currentPage === 1" (click)="setPage(1)">First</button>
+            <button type="button" [disabled]="pager.currentPage === 1" (click)="setPage(pager.currentPage - 1)">Previous</button>
+
+            <li *ngFor="let page of pager.pages" class="page-item" [ngClass]="{active:pager.currentPage === page}">
+                <button class="page-link" type="button" (click)="setPage(page)">{{page}}</button>
+            </li>
+
+            <button type="button" [disabled]="pager.currentPage === pager.totalPages" (click)="setPage(pager.currentPage + 1)">Next</button>
+            <button type="button" [disabled]="pager.currentPage === pager.totalPages" (click)="setPage(pager.totalPages)">Last</button>
+        </ul>
+    </div>
+</div>

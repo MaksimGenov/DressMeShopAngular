@@ -15,8 +15,8 @@ body {
 
 #notification {
   position: sticky;
-  top: 5rem;
-  right: 50px;
+  top:70px;
+  right: 100px;
   float: right;
   z-index: 1;
   max-width: 400px;
@@ -25,4 +25,30 @@ body {
   font-size: medium;
   font-weight: bolder;
   color: white;
+}
+
+/* .test {
+  position: sticky;
+  top: 5rem;
+  right: 50px;
+  z-index: 1;
+  max-width: 400px;
+  padding: 0.5rem;
+  border-radius: 5px;
+  font-size: medium;
+  font-weight: bolder;
+  color: white;
+} */
+
+.centered {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.content {
+  min-height: 50vh;
 }
