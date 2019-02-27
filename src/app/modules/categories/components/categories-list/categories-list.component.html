@@ -1,6 +1,6 @@
 <app-spinner *ngIf='isLoading'></app-spinner>
 <div *ngIf='!isLoading' class="container-fluid">
-  <div class="row m-auto">
+  <div class="container-fluid row">
     <div *ngFor='let category of categories' class="col-md-2 p-0 m-2">
       <app-category-card [category]='category' [deleteCategory]="deleteCategory"></app-category-card>
     </div>

@@ -6,13 +6,8 @@
         *ngIf="brandDropDownList"
         [data]="brandDropDownList"
         [settings]="brandDropdownSettings"
-        (update)="onBrandSelect($event)"
-        >
+        (update)="onBrandSelect($event)">
       </app-multiselect-dropdown>
-      <!-- <select class="form-control" formControlName='brand'>
-        <option value="null" disabled="true" [selected]='true'>Select brand...</option>
-        <option *ngFor='let brand of brands' ngValue="{{brand.name}}">{{brand.name}}</option>
-      </select> -->
     </div>
     
     <div class="form-group">
@@ -46,6 +41,7 @@
       </div>
     </div>
 
-    <button type="submit" class="btn btn-primary btn-block">Search</button>
+    <button type="button" class="btn btn-warning btn-block" (click)="resetForm()">Clear filters</button>
+    <button type="submit" class="btn btn-primary btn-block">Apply filters</button>
   </form>
 </div>

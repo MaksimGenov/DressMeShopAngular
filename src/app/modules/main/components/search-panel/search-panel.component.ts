@@ -76,7 +76,6 @@ export class SearchPanelComponent implements OnInit {
 
   initForm(): void {
     this.form = new FormGroup({
-      brand: new FormControl(),
       minPrice: new FormControl(),
       maxPrice: new FormControl()
     })
@@ -88,9 +87,6 @@ export class SearchPanelComponent implements OnInit {
     params.sizes = this.selctedSizes
     params.brand = this.selectedBrand
     this.router.navigate(['/products'], {queryParams: params})
-    this.form.reset()
-    this.sizesDropdownList = [...this.sizesDropdownList]
-    this.categoriesDropdownList = [...this.categoriesDropdownList]
   }
 
   onCategorySelect(categories: string[]): void {
@@ -106,6 +102,12 @@ export class SearchPanelComponent implements OnInit {
   }
 
   resetForm() {
-
+    this.form.reset()
+    this.sizesDropdownList = [...this.sizesDropdownList]
+    this.categoriesDropdownList = [...this.categoriesDropdownList]
+    this.brandDropDownList = [...this.brandDropDownList]
+    this.selctedSizes = []
+    this.selectedBrand = null
+    this.selectedCategories = []
   }
 }

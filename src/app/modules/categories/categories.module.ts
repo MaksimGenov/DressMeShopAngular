@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
 import { CategoriesRoutingModule } from './categories-routing.module';
 
-import { CategoriesMainComponent } from './components/categories-main/categories-main.component';
 import { CategoriesListComponent } from './components/categories-list/categories-list.component';
 import { CategoryCardComponent } from './components/category-card/category-card.component';
 
@@ -16,7 +15,6 @@ import { CategoryService } from '../../services/category-service/category.servic
     SharedModule
   ],
   declarations: [
-    CategoriesMainComponent,
     CategoriesListComponent,
     CategoryCardComponent
   ],
