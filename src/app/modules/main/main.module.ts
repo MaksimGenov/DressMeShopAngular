@@ -15,7 +15,6 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { ProductService } from "src/app/services/product-service/product.service";
 import { FormDataBuilder } from "src/app/utils/FormDataBuilder/FormDataBuilder";
 import { CategoryService } from "src/app/services/category-service/category.service";
-import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { TestComponent } from "./components/test/test.component";
 import { BrandService } from "src/app/services/brand-service/brand.service";
 
@@ -34,8 +33,7 @@ import { BrandService } from "src/app/services/brand-service/brand.service";
     RouterModule,
     MainRoutingModule,
     SharedModule,
-    ReactiveFormsModule,
-    NgMultiSelectDropDownModule.forRoot()
+    ReactiveFormsModule
   ],
   providers: [
     httpInterceptorProviders,
