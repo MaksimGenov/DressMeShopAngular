@@ -4,10 +4,10 @@ const port = process.env.PORT || 8080
 
 const app = express()
 
-// app.use(express.static(path.join(__dirname, '/dist/DressMeShop')))
+app.use(express.static('/dist/DressMeShop'))
 
-// app.get('/*all', (res, req) => {
-//   res.sendFile(path.join(__dirname, '/dist/DressMeShop/index.html'))
-// })
+app.get('/*', (res, req) => {
+  res.sendFile('/dist/DressMeShop/index.html')
+})
 
 app.listen(port)
