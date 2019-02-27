@@ -8,7 +8,6 @@ app.use(express.static(path.join(__dirname, '/dist/DressMeShop')))
 
 app.get('*', (res, req) => {
   res.sendFile(path.join(__dirname, '/dist/DressMeShop/index.html'))
-  // res.send('hello')
 })
 
 app.listen(port)
