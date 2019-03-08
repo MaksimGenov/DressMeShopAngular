@@ -19,4 +19,11 @@ export class SizeService {
 
     return this.fetcher.get<Size[]>(url)
   }
+
+  create(size: Size): Observable<Size> {
+    const endpoint: string = this.collection + "/create"
+    const url: string = environment.apiUrl + endpoint
+
+    return this.fetcher.post<Size>(url, size)
+  } 
 }

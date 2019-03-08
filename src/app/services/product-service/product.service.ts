@@ -67,7 +67,6 @@ export class ProductService {
   }
 
   search(productSearchDTO: ProductSearchDTO): Observable<Page<Product>> {
-    console.log(productSearchDTO)
     const endpoint = this.collection + '/search'
     const url = environment.apiUrl + endpoint
     return this.fetcher.post<Page<Product>>(url, productSearchDTO);

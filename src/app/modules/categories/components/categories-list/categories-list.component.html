@@ -1,11 +1,11 @@
 <app-spinner *ngIf='isLoading'></app-spinner>
-<div *ngIf='!isLoading' class="container-fluid">
-  <div class="container-fluid row">
-    <div *ngFor='let category of categories' class="col-md-2 p-0 m-2">
+<div *ngIf='!isLoading'>
+  <div class="row m-0 justify-content-center">
+    <div *ngFor='let category of categories' class="col-5 col-md-4 col-xl-2 m-1">
       <app-category-card [category]='category' [deleteCategory]="deleteCategory"></app-category-card>
     </div>
   </div>
-  <div class="d-flex justify-content-center">
+  <div class="row justify-content-center mt-3">
     <app-pagination [itemsCount]='categoriesTotalCount' [itemsPerPage]='categoriesPerPage'></app-pagination>
   </div>
 </div>

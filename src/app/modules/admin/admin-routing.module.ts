@@ -9,6 +9,7 @@ import { EditProductFormComponent } from './components/edit-product-form/edit-pr
 import { EditBrandFormComponent } from './components/edit-brand-form/edit-brand-form.component';
 import { EditCategoryFormComponent } from './components/edit-category-form/edit-category-form.component';
 import { TestComponent } from './components/test/test.component';
+import { AddSizeFormComponent } from './components/add-size-form/add-size-form.component';
 
 const routes: Routes = [
   {
@@ -20,6 +21,7 @@ const routes: Routes = [
       {path: 'addCategory', component: AddCategoryFormComponent},
       {path: 'brands/edit/:id', component: EditBrandFormComponent},
       {path: 'categories/edit/:id', component: EditCategoryFormComponent},
+      {path: 'addSize', component: AddSizeFormComponent},
       {path: 'test', component: TestComponent}
     ]
   }

@@ -13,7 +13,7 @@ import { HttpResponse } from '@angular/common/http';
 import { Page } from 'src/app/models/Page';
 import { SizeService } from 'src/app/services/size-service/size.service';
 import { Size } from 'src/app/models/Size';
-import { JSONP_ERR_NO_CALLBACK } from '@angular/common/http/src/jsonp';
+import { MultiselectSettings } from 'src/app/models/MultiselectSettings';
 
 @Component({
   selector: 'app-add-product-form',
@@ -27,6 +27,9 @@ export class AddProductFormComponent implements OnInit {
   images: File[] = []
   imagesPreviewUrl: string[] = []
   form: FormGroup
+  categoryDropdownList: string[]
+  selectedCategories: string[]
+  categoriesMultiselectSettings: MultiselectSettings
 
   constructor(
     private brandService: BrandService,
@@ -41,11 +44,14 @@ export class AddProductFormComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.setMultiSelectSettings()
+
     forkJoin(this.loadBrands(), this.loadCategories(), this.loadSizes())
     .subscribe(([brands, categories, sizes]) => {
       this.brands = brands.body.content
       this.categories = categories.body.content
-      this.sizes = sizes.body
+      this.categoryDropdownList = categories.body.content.map(category => category.name)
+      this.sizes = sizes.body.sort((s1, s2) => Number(s1.name) >= Number(s2.name) ? 1 : -1)
       this.initForm()
     })
   }
@@ -63,9 +69,6 @@ export class AddProductFormComponent implements OnInit {
   }
 
   initForm(): void {
-    console.log(this.categories)
-    let categories = new FormGroup({})
-    this.categories.forEach((c, i) => categories.setControl(c.name, new FormControl()))
     let sizes = new FormGroup({})
     this.sizes.forEach(s => sizes.setControl(s.name, new FormControl))
 
@@ -76,7 +79,6 @@ export class AddProductFormComponent implements OnInit {
       price: new FormControl(null, [Validators.required]),
       brand: new FormControl(null, [Validators.required]),
       files: new FormControl(null, [Validators.required]),
-      categories,
       sizes
     })
   }
@@ -94,13 +96,10 @@ export class AddProductFormComponent implements OnInit {
     sizes = Object.keys(sizes)
       .filter(key => sizes[key] !== null)
       .map(key => { return { size: key, quantity: sizes[key] } })
-    
-    let categories = this.form.get("categories").value
-    categories = Object.keys(categories).filter(k => categories[k])
 
     let product = Object.assign({}, this.form.value)
     product.sizes = sizes
-    product.categories = categories
+    product.categories = this.selectedCategories
     delete product.files
     
     this.productService.create(product, this.images)
@@ -118,9 +117,10 @@ export class AddProductFormComponent implements OnInit {
   }
 
   resetForm() {
-    this.form.reset();
-    this.images = [];
-    this.imagesPreviewUrl = [];
+    this.form.reset()
+    this.selectedCategories = []
+    this.images = []
+    this.imagesPreviewUrl = []
   }
 
   async onFileChange(event) {
@@ -129,4 +129,14 @@ export class AddProductFormComponent implements OnInit {
     this.imagesPreviewUrl = await Promise.all(this.images.map(this.imageService.generateImagePreviewUrl))
   }
 
+  onCategorySelect(categories: string[]) {
+    this.selectedCategories = categories
+  }
+
+  setMultiSelectSettings() {
+    this.categoriesMultiselectSettings = {
+      itemsShowLimit: 4,
+      placeholder: "Select categories..."
+    }
+  }
 }

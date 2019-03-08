@@ -4,6 +4,7 @@ import { ProductService } from '../../../../services/product-service/product.ser
 import { AuthService } from '../../../../services/auth-service/auth.service';
 import { Product } from 'src/app/models/Product';
 import { Form, FormGroup, FormControl } from '@angular/forms';
+import { SizeQuantity } from 'src/app/models/SizeQuantity';
 
 @Component({
   selector: 'app-product-details',
@@ -24,7 +25,7 @@ export class ProductDetailsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.initSizeDropdownSettings()
+    this.setSizeDropdownSettings()
     this.initForm()
     this.route.params.subscribe(params => {
       const productId = params.id
@@ -32,25 +33,29 @@ export class ProductDetailsComponent implements OnInit {
     })
   }
 
-  initSizeDropdownSettings(): any {
+  setSizeDropdownSettings(): any {
     this.sizeDropdownSettings = {
       placeholder: "Select size...",
       allowSingleSelection: true
     }
   }
 
-  initForm() {
-    this.form = new FormGroup({
-      quantity: new FormControl(1)
-    })
-  }
-
   loadProduct(id: any) {
     this.productService.get(id).subscribe(response => {
       this.product = response.body
-      this.sizeDropdownList = this.product.sizes
-        .map(sizeQty => sizeQty.size.name)
-        .sort((s1,s2) => Number(s1) >= Number(s2) ? 1 :-1)
+      this.setSizeDropdownList(this.product.sizes)
+    })
+  }
+
+  setSizeDropdownList(sizesQuantity: SizeQuantity[]) {
+    this.sizeDropdownList = sizesQuantity
+      .map(sizeQty => sizeQty.size.name)
+      .sort((s1, s2) => Number(s1) >= Number(s2) ? 1 : -1)
+  } 
+
+  initForm() {
+    this.form = new FormGroup({
+      quantity: new FormControl(1)
     })
   }
 

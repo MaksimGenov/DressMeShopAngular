@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { CategoryService } from '../../../../services/category-service/category.service';
 import { Category } from '../../../../models/Category';
+import { NotificationService } from 'src/app/services/notification-service/notification.service';
 
 @Component({
   selector: 'app-categories-list',
@@ -16,7 +17,8 @@ export class CategoriesListComponent implements OnInit {
 
   constructor(
     private categoryService: CategoryService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private notificationService: NotificationService
   ) {
     this.deleteCategory = this.deleteCategory.bind(this)
     this.loadCategories = this.loadCategories.bind(this)
@@ -50,6 +52,9 @@ export class CategoriesListComponent implements OnInit {
   }
 
   deleteCategory(id: string) {
-    this.categoryService.delete(id, this.loadCategories)
+    this.categoryService.delete(id).subscribe(response => {
+      this.notificationService.pop("success", "Category deleted successfully!")
+      this.categories = this.categories.filter(c => c.id !== id)
+    })
   }
 }

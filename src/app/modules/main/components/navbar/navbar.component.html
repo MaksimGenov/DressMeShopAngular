@@ -1,0 +1,16 @@
+<nav class="navbar justify-content-between sticky-top navbar-expand-md navbar-dark bg-dark">
+    <a class="navbar-brand col" routerLink="/home">Dress Me</a>
+    <button class="navbar-toggler" type="button" (click)="toogle()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="navbar-collapse justify-content-center" [ngClass]="{'collapse.show': isOpen, 'collapse': !isOpen}">
+      <app-nav-horizontal [links]="links" [toogleMenu]="toogle"></app-nav-horizontal>
+    </div>
+    <div class="navbar-collapse justify-content-end" [ngClass]="{'collapse.show': isOpen, 'collapse': !isOpen}">
+      <ul class="navbar-nav mt-2 mt-lg-0">
+        <li *ngIf="isLogged" class="nav-item">
+          <a class="nav-link" (click)="logout()">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </nav>

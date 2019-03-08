@@ -1,3 +1,14 @@
-<div  class="nav-bar nav-pills">
-  <app-nav-link *ngFor='let link of navLinks' [navLink]='link' [className]='"nav-vertical-link"'></app-nav-link>
-</div>
+<!-- <ul class="nav mt-2 mt-lg-0 dropdown" *ngIf="links">
+  <li *ngFor="let link of links">
+    <app-nav-link [link]="link" (click)="toogle()"></app-nav-link>
+    <div class="dropdown-content bg-dark" *ngIf="link.sublinks">
+      <app-nav-vertical [links]="link.sublinks" [toogle]="toogle"></app-nav-vertical>
+    </div>
+  </li>
+</ul> -->
+<nav class="navbar-nav d-flex flex-column px-2"> 
+  <div class="" *ngFor="let link of links">
+    <app-nav-link *ngIf="!link.sublinks" [link]="link" (click)="toogleMenu()"></app-nav-link>
+    <app-nav-dropdown *ngIf="link.sublinks" [link]="link" [toogleMenu]="toogleMenu"></app-nav-dropdown>
+  </div>
+</nav>

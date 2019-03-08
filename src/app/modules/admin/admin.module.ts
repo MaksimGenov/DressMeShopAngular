@@ -18,6 +18,7 @@ import { EditBrandFormComponent } from './components/edit-brand-form/edit-brand-
 import { EditCategoryFormComponent } from './components/edit-category-form/edit-category-form.component';
 import { TestComponent } from './components/test/test.component';
 import { SizeService } from 'src/app/services/size-service/size.service';
+import { AddSizeFormComponent } from './components/add-size-form/add-size-form.component';
 
 @NgModule({
   imports: [
@@ -35,7 +36,8 @@ import { SizeService } from 'src/app/services/size-service/size.service';
     EditProductFormComponent,
     EditBrandFormComponent,
     EditCategoryFormComponent,
-    TestComponent
+    TestComponent,
+    AddSizeFormComponent
   ],
   providers: [
     BrandService,

@@ -1,15 +1,15 @@
-<div class="main-bg">
-  <div class="default-bg">
-    <div id="notification" hidden></div>
-    <app-header></app-header>
-    <app-nav-horizontal></app-nav-horizontal>
-    <div class="container-fluid row p-0">
-      <div class="col-3">
-        <app-search-panel></app-search-panel>
-      </div>
-      <div class="col-9">
-        <router-outlet></router-outlet>
-      </div>
+<div class="container-fluid p-0">
+  <div id="notification" hidden></div>
+  <app-navbar></app-navbar>
+  <div class="row content m-0 mt-2">
+    <div class="d-xs-block d-md-none col-12">
+      <button class="btn btn-block btn-primary" (click)="toogleSearchPanel()">Search</button>
     </div>
+    <aside class="d-md-block col" [ngClass]="{'d-none': isSearchPanelVisiable, 'd-none': !isSearchPanelVisiable}">
+      <app-search-panel></app-search-panel>
+    </aside>
+    <section class="col-12 col-md-9 d-relative">
+      <router-outlet></router-outlet>
+    </section>
   </div>
 </div>

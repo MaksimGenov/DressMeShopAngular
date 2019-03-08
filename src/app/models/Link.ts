@@ -1,8 +1,10 @@
 export interface Link {
   name: string,
   url: string,
-  protection: {
+  hideIfLogged?: boolean,
+  protection?: {
     admin: boolean,
     user: boolean
-  }
+  },
+  sublinks?: Link[]
 }

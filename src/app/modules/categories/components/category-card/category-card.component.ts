@@ -2,7 +2,6 @@ import { Component, Input, ElementRef } from '@angular/core';
 import { Category } from '../../../../models/Category';
 import { AuthService } from '../../../../services/auth-service/auth.service';
 import { CategoryService } from '../../../../services/category-service/category.service';
-import { Router } from '../../../../../../node_modules/@angular/router';
 
 @Component({
   selector: 'app-category-card',
@@ -12,7 +11,6 @@ import { Router } from '../../../../../../node_modules/@angular/router';
 export class CategoryCardComponent {
   @Input() category: Category
   @Input() deleteCategory: Function
-  isLoadingImg = true
 
   constructor(
     private authService: AuthService,

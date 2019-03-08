@@ -9,7 +9,6 @@ import { SharedModule } from "../shared/shared.module";
 import { Fetcher } from "src/app/utils/Fetcher";
 import { httpInterceptorProviders } from "src/app/interceptors";
 import { NgModule } from "@angular/core";
-import { NavHorizontalComponent } from "./components/nav-horizontal/nav-horizontal.component";
 import { SearchPanelComponent } from './components/search-panel/search-panel.component';
 import { ReactiveFormsModule } from "@angular/forms";
 import { ProductService } from "src/app/services/product-service/product.service";
@@ -17,14 +16,15 @@ import { FormDataBuilder } from "src/app/utils/FormDataBuilder/FormDataBuilder";
 import { CategoryService } from "src/app/services/category-service/category.service";
 import { TestComponent } from "./components/test/test.component";
 import { BrandService } from "src/app/services/brand-service/brand.service";
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    NavHorizontalComponent,
     SearchPanelComponent,
-    TestComponent
+    TestComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

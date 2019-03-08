@@ -1,14 +1,11 @@
-<div class="img-container">
-  <app-spinner
-    *ngIf="isLoading"
-    width="{{spinnerWidth}}" 
-    height="{{spinnerHeight}}"
-    class="centered"
-  ></app-spinner>
-  <img 
-    class="centered"
-    src="{{src}}"
-    alt="image"
-    (load)="onLoad()"
-  >
-</div>
+<app-spinner
+  *ngIf="isLoading"
+  width="{{spinnerWidth}}" 
+  height="{{spinnerHeight}}"
+></app-spinner>
+<img 
+  class="w-100 h-100"
+  src="{{src}}"
+  alt="image"
+  (load)="onLoad()"
+>

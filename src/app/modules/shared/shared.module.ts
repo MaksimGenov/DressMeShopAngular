@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 import { NavLinkComponent } from './components/nav-link/nav-link.component';
-import { NavVerticalComponent } from './components/nav-vertical/nav-vertical.component';
 import { PaginationComponent } from './components/pagination/pagination.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
@@ -13,6 +12,9 @@ import { ResizerDirective } from './resizer/resizer.directive';
 import { ImgWithSpinnerComponent } from './components/img-with-spinner/img-with-spinner.component';
 import { MultiselectDropdownComponent } from './components/multiselect-dropdown/multiselect-dropdown.component';
 import { ClickOutsideDirective } from './directives/click-outside/click-outside.directive';
+import { NavVerticalComponent } from './components/nav-vertical/nav-vertical.component';
+import { NavHorizontalComponent } from './components/nav-horizontal/nav-horizontal.component';
+import { NavDropdownComponent } from './components/nav-dropdown/nav-dropdown.component';
 
 @NgModule({
   imports: [
@@ -21,7 +23,6 @@ import { ClickOutsideDirective } from './directives/click-outside/click-outside.
   ],
   declarations: [
     NavLinkComponent,
-    NavVerticalComponent,
     PaginationComponent,
     SpinnerComponent,
     CarouselComponent,
@@ -29,14 +30,16 @@ import { ClickOutsideDirective } from './directives/click-outside/click-outside.
     ResizerDirective,
     ImgWithSpinnerComponent,
     MultiselectDropdownComponent,
-    ClickOutsideDirective
+    ClickOutsideDirective,
+    NavVerticalComponent,
+    NavHorizontalComponent,
+    NavDropdownComponent
   ],
   providers: [
     AuthService,
   ],
   exports: [
     NavLinkComponent,
-    NavVerticalComponent,
     PaginationComponent,
     SpinnerComponent,
     ZoomDirective,
@@ -44,7 +47,10 @@ import { ClickOutsideDirective } from './directives/click-outside/click-outside.
     ImgWithSpinnerComponent,
     CarouselComponent,
     MultiselectDropdownComponent,
-    ClickOutsideDirective
+    ClickOutsideDirective,
+    NavVerticalComponent,
+    NavHorizontalComponent,
+    NavDropdownComponent
   ],
 })
 export class SharedModule { }

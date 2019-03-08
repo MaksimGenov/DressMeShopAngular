@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Link } from '../../../../models/Link';
+import { Link } from 'src/app/models/Link';
 
 @Component({
   selector: 'app-nav-vertical',
@@ -7,6 +7,8 @@ import { Link } from '../../../../models/Link';
   styleUrls: ['./nav-vertical.component.css']
 })
 export class NavVerticalComponent {
-  @Input() navLinks: Link[]
+  @Input() links: Link[]
+  @Input() toogleMenu: Function
+
   constructor() { }
 }

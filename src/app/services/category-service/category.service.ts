@@ -33,17 +33,10 @@ export class CategoryService {
     return this.fetcher.post<Category>(url, formData)
   }
 
-  delete(id: string, callback: Function) {
+  delete(id: string) {
     const endpoint = this.collection + '/delete/' + id
     const url = environment.apiUrl + endpoint
-    this.fetcher.delete(url)
-      .subscribe(
-        () => {
-          callback()
-          this.notificationService.pop('success', 'Category deleted successfully!')
-        },
-        error => this.notificationService.pop('error', error.error)
-      )
+    return this.fetcher.delete(url)
   }
 
   get(id: string) {

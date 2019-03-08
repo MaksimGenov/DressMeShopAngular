@@ -1,9 +1,6 @@
-<a 
-  appZoom 
-  *ngIf='navLink && (protection?.admin && isAdmin) || (protection?.user && isLogged) || !protection'
-  routerLink='{{navLink.url}}' 
-  routerLinkActive='active'
+<a appZoom *ngIf='link && isVisiable()' 
+  routerLink='{{link.url}}' 
+  routerLinkActive='active' 
   class="nav-link {{className}}"
->
-  {{navLink.name | titlecase}}
+  >{{link.name | titlecase}}
 </a>

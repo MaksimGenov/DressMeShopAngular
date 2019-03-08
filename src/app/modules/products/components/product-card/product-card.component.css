@@ -1,4 +1,5 @@
-.product-card-img-container {
+#product-card .img-container {
+  position: relative;
   background-color: white;
   height: 200px;
   border-radius: 5%;

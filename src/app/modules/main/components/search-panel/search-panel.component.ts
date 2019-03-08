@@ -10,6 +10,7 @@ import { HttpResponse } from '@angular/common/http';
 import { Brand } from 'src/app/models/Brand';
 import { Size } from 'src/app/models/Size';
 import { Page } from 'src/app/models/Page';
+import { MultiselectSettings } from 'src/app/models/MultiselectSettings';
 
 @Component({
   selector: 'app-search-panel',
@@ -20,12 +21,12 @@ export class SearchPanelComponent implements OnInit {
   form: FormGroup;
   categoriesDropdownList: String[]
   selectedCategories: string[] = []
-  categoryDropdownSettings = {}
-  sizeDropdownSettings = {}
+  categoryDropdownSettings: MultiselectSettings
+  sizeDropdownSettings: MultiselectSettings
   sizesDropdownList: string[]
   selctedSizes: string[] = []
   brandDropDownList: string[]
-  brandDropdownSettings = {}
+  brandDropdownSettings: MultiselectSettings
   selectedBrand: string;
 
   constructor(
@@ -39,7 +40,7 @@ export class SearchPanelComponent implements OnInit {
     .subscribe(([brands, categories, sizes]) => {
       this.brandDropDownList = brands.body.content.map(brand => brand.name)
       this.categoriesDropdownList = categories.body.content.map(category => category.name)
-      this.sizesDropdownList = sizes.body.map(size => size.name)
+      this.sizesDropdownList = sizes.body.map(size => size.name).sort((s1,s2) => Number(s1) - Number(s2))
     }) 
     this.initForm()
     this.setMultiselectSettings()

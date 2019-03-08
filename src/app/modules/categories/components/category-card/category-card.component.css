@@ -1,6 +1,7 @@
 .category-card-img-container {
   position: relative;
-  height: 150px;
+  min-height: 100px;
+  max-height: 150px;
   margin-left: auto;
   margin-right: auto;
   border-radius: 60px;
@@ -11,4 +12,11 @@
  .category-card-admin-controls {
    position: relative;
    text-align: center;
+ }
+
+ .category-image {
+   position: relative;
+   height: 150px;
+   width: 100%;
+   overflow: hidden;
  }

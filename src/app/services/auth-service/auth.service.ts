@@ -107,6 +107,10 @@ export class AuthService {
     return this.roles.includes('admin')
   }
 
+  getRoles(): string[] {
+    return this.roles;
+  }
+
   getCart(): Observable<HttpResponse<OrderItem[]>> {
     const endpoint = this.collection + '/get-cart-items'
     const url = environment.apiUrl + endpoint

@@ -1,13 +1,9 @@
 import { HttpClient, HttpResponse, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-const LOCAL_SERVER: string = 'http://localhost:5000/api'
-const LOCAL_SERVER_JAVA: string = 'http://localhost:8000'
-const LIVE_SERVER: string = ' https://dreess-me-java.herokuapp.com'
 
 @Injectable()
 export class Fetcher {
-  private server: string = LIVE_SERVER
 
   constructor(private http: HttpClient) { }
 
