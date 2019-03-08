@@ -5,7 +5,7 @@
     <div class="d-xs-block d-md-none col-12">
       <button class="btn btn-block btn-primary" (click)="toogleSearchPanel()">Search</button>
     </div>
-    <aside class="d-md-block col" [ngClass]="{'d-none': isSearchPanelVisiable, 'd-none': !isSearchPanelVisiable}">
+    <aside class="d-md-block col" [ngClass]="{'d-none': !isSearchPanelVisiable}">
       <app-search-panel></app-search-panel>
     </aside>
     <section class="col-12 col-md-9 d-relative">
