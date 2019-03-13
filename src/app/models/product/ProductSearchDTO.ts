@@ -1,12 +1,13 @@
+import { PageRequest } from "../PageRequest";
+
 export class ProductSearchDTO {
   model: string
   brand: string
-  page: number
-  pageSize: number
   minPrice: number
   maxPrice: number
   categories: string[]
   sizes: string[]
+  pageRequest: PageRequest
 
   constructor()
   constructor(
@@ -15,7 +16,8 @@ export class ProductSearchDTO {
     categories?: string[],
     sizes?: string[],
     minPrice?: number,
-    maxPrice?: number) {
+    maxPrice?: number,
+    sort?: Object) {
       this.brand = brand
       this.model = model
       this.categories = categories

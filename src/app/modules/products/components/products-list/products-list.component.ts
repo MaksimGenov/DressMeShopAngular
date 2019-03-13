@@ -23,7 +23,8 @@ export class ProductsListComponent implements OnInit {
 
   loadProducts(queryParams: Params): void {
     this.isLoading = true
-    this.productService.search(this.generateProductSerchDTO(queryParams))
+    let searchDTO = this.generateProductSerchDTO(queryParams)
+    this.productService.search(searchDTO)
       .subscribe(response => {
         this.products = response.content
         this.productsTotalCount = response.totalElements
@@ -33,19 +34,21 @@ export class ProductsListComponent implements OnInit {
 
   generateProductSerchDTO(queryParams: Params): ProductSearchDTO {
     let productSearchDTO = new ProductSearchDTO()
-    Object.keys(productSearchDTO)
-      .forEach(key => {
-        let item = queryParams[key]
+    Object.keys(productSearchDTO).forEach(key => {
+        let value = queryParams[key]
         if(key === "sizes" || key === "categories") 
-          productSearchDTO[key] = Array.isArray(item) ? [...item] : [item]
+          productSearchDTO[key] = Array.isArray(value) ? [...value] : [value]
         else
-          productSearchDTO[key] = item ? item : null
+          productSearchDTO[key] = value ? value : null
       })
 
-    if (typeof productSearchDTO.page === 'undefined')
-      productSearchDTO.page = 1
-    if (typeof productSearchDTO.pageSize === 'undefined')
-      productSearchDTO.pageSize = this.productsPerPage
+    let page = queryParams.page ? queryParams.page : 1
+    let pageSize = queryParams.pageSize ? queryParams.pageSize : this.productsPerPage
+
+    let sort = [{property:'creation_date', direction: 'desc'}]
+    let pageRequest = {page, size: pageSize, sort }
+
+    productSearchDTO.pageRequest = pageRequest
       
     return productSearchDTO
   }
