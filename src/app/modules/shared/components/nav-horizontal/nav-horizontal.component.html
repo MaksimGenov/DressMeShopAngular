@@ -1,6 +1,6 @@
 <ul class="navbar-nav">
   <li class="" *ngFor="let link of links">
-    <app-nav-link *ngIf="!link.sublinks" [link]="link" (click)="toogleMenu()"></app-nav-link>
-    <app-nav-dropdown *ngIf="link.sublinks" [link]="link" [toogleMenu]="toogleMenu"></app-nav-dropdown>
+    <app-nav-link [link]="link" (click)="toogleMenu()"></app-nav-link>
+    <!-- <app-nav-dropdown *ngIf="link.sublinks" [link]="link" [toogleMenu]="toogleMenu"></app-nav-dropdown> -->
   </li>
 </ul>

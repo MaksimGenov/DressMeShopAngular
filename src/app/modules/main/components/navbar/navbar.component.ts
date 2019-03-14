@@ -20,14 +20,7 @@ export class NavbarComponent implements OnInit {
       {name: "brands", url: "brands"},
       {name: "categories", url: "/categories"},
       {name: "cart", url: "user/cart", protection: {admin: false, user:true}},
-      { name: "admin", url: "/admin", protection: {admin: true, user:false},
-        sublinks: [
-          {name: "add category", url: "/admin/addCategory"},
-          {name: "add brand", url: "/admin/addBrand"},
-          {name: "add product", url: "/admin/addProduct"},
-          {name: "add size", url: "/admin/addSize"}
-        ]
-      },
+      {name: "admin", url: "/admin", protection: {admin: true, user:false}},
       {name: "login", url: "auth/login", hideIfLogged: true},
       {name: "register", url: "auth/register", hideIfLogged: true}
     ]

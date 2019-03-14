@@ -8,6 +8,9 @@ import { BrandService } from 'src/app/services/brand-service/brand.service';
 import { CategoryService } from 'src/app/services/category-service/category.service';
 import { ImageService } from 'src/app/services/image-service/image.service';
 import { Product } from 'src/app/models/Product';
+import { forkJoin, Observable } from 'rxjs';
+import { HttpResponse } from '@angular/common/http';
+import { Page } from 'src/app/models/Page';
 
 @Component({
   selector: 'app-edit-product-form',
@@ -17,8 +20,11 @@ import { Product } from 'src/app/models/Product';
 export class EditProductFormComponent implements OnInit {
   form: FormGroup
   availableBrands: Brand[]
+
+  categoriesDropdownList: string[]
+  selectedCategories: string[]
   availableCategories: Category[]
-  selectedCategories: string[] = []
+
   imagesPreviewUrl: string[] = []
   images: File[] = []
   productId: string;
@@ -32,26 +38,26 @@ export class EditProductFormComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.loadCategories()
-    this.loadBrands()
-    this.loadProduct()
+    forkJoin([this.loadBrands(), this.loadCategories(),this.loadProduct()])
+      .subscribe(([brands, categories, product]) => {
+        this.availableBrands = brands.body.content
+        this.categoriesDropdownList = categories.body.content.map(c => c.name)
+        this.selectedCategories = product.body.categories.map(c => c.name)
+        this.initForm(product.body)
+      })
   }
   
-  loadProduct(): any {
+  loadProduct(): Observable<HttpResponse<Product>> {
     this.productId = this.route.snapshot.params.id
-    this.productService.get(this.productId).subscribe(response => this.initForm(response.body))
+    return this.productService.get(this.productId)
   }
 
-  loadCategories(): void {
-    this.categoryService.getPage({}).subscribe(
-      response => this.availableCategories = response.body.content
-    )
+  loadCategories(): Observable<HttpResponse<Page<Category>>>  {
+    return this.categoryService.getPage({})
   }
 
-  loadBrands(): void {
-    this.brandService.getPage({}).subscribe(
-      response => this.availableBrands = response.body.content
-    )
+  loadBrands(): Observable<HttpResponse<Page<Brand>>> {
+    return this.brandService.getPage({})
   }
 
   initForm(product: Product): void {
@@ -59,7 +65,7 @@ export class EditProductFormComponent implements OnInit {
       model: new FormControl(product.model, Validators.required),
       description: new FormControl(product.description, Validators.required),
       brand: new FormControl(product.brand.name, Validators.required),
-      categories: new FormControl(product.categories.map(c => c.name), Validators.required),
+      // categories: new FormControl(product.categories.map(c => c.name), Validators.required),
       color: new FormControl(product.color, Validators.required),
       price: new FormControl(product.price, Validators.required),
     })
@@ -79,16 +85,8 @@ export class EditProductFormComponent implements OnInit {
     this.imagesPreviewUrl = await Promise.all(this.images.map(image => this.imageService.generateImagePreviewUrl(image)))
   }
 
-  selectCategory(event) {
-    let name = event.target.value
-    if (this.selectedCategories.includes(name)) {
-      let index = this.selectedCategories.indexOf(name)
-      this.selectedCategories.splice(index, 1)
-    } else {
-      this.selectedCategories.push(name)
-    }
-
-    this.form.get('categories').setValue(this.selectedCategories)
+  onCategorySelect(categories) {
+    console.log(categories)
   }
 
   onSubmit(event) {

@@ -24,7 +24,7 @@ export class SearchPanelComponent implements OnInit {
   categoryDropdownSettings: MultiselectSettings
   sizeDropdownSettings: MultiselectSettings
   sizesDropdownList: string[]
-  selctedSizes: string[] = []
+  selectedSizes: string[] = []
   brandDropDownList: string[]
   brandDropdownSettings: MultiselectSettings
   selectedBrand: string;
@@ -85,7 +85,7 @@ export class SearchPanelComponent implements OnInit {
   onSubmit(): void {
     let params = this.form.value
     params.categories = this.selectedCategories
-    params.sizes = this.selctedSizes
+    params.sizes = this.selectedSizes
     params.brand = this.selectedBrand
     this.router.navigate(['/products'], {queryParams: params})
   }
@@ -95,7 +95,7 @@ export class SearchPanelComponent implements OnInit {
   }
 
   onSizeSelect(sizes: string[]): void {
-      this.selctedSizes = sizes
+      this.selectedSizes = sizes
   }
 
   onBrandSelect(brands: string[]) {
@@ -104,10 +104,7 @@ export class SearchPanelComponent implements OnInit {
 
   resetForm() {
     this.form.reset()
-    this.sizesDropdownList = [...this.sizesDropdownList]
-    this.categoriesDropdownList = [...this.categoriesDropdownList]
-    this.brandDropDownList = [...this.brandDropDownList]
-    this.selctedSizes = []
+    this.selectedSizes = []
     this.selectedBrand = null
     this.selectedCategories = []
   }

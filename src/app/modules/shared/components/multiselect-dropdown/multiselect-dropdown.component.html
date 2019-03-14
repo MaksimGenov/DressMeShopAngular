@@ -1,4 +1,4 @@
-<div class="dropdown">
+<div class="dropdown" *ngIf="data">
   <div class="dropdown-line" >
     <div *ngIf="selectedItems.length === 0" class="dropdown-placeholder" (click)="onOpen()">
       <span>{{settings.placeholder}}</span>

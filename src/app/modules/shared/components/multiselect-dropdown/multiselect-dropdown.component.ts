@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy, OnChanges, SimpleChange, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-multiselect-dropdown',
@@ -8,28 +8,25 @@ import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy
 export class MultiselectDropdownComponent implements OnInit, OnChanges {
   @Input() data: string[]
   @Input() settings: any
-  @Input() selectedItems: string[]
+  @Input() selectedItems: string[] = []
   @Output() update: EventEmitter<string[]>
   isDropDownOpen: boolean
   dropdownItemList: string[]
   areAllItemsSelected: boolean
   
   constructor() {
-    this.isDropDownOpen = false
     this.update = new EventEmitter()
   }
 
   ngOnInit(): void {
+    this.isDropDownOpen = false
     this.areAllItemsSelected = false
-    this.dropdownItemList = [...this.data]
     this.initSetting()
-    this.initSelectedItems()
   }
   
   ngOnChanges() {
     this.areAllItemsSelected = false
     this.dropdownItemList = [...this.data]
-    this.selectedItems = []
   }  
 
   initSetting() {
@@ -42,9 +39,9 @@ export class MultiselectDropdownComponent implements OnInit, OnChanges {
     this.settings = Object.assign(defaultSettings, this.settings)
   }
 
-  initSelectedItems() {
+  updateSelectedItems() {
     if (typeof this.selectedItems !== "undefined")
-    return
+      return
 
     this.selectedItems = []
   }

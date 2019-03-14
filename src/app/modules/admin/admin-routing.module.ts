@@ -13,18 +13,15 @@ import { AddSizeFormComponent } from './components/add-size-form/add-size-form.c
 
 const routes: Routes = [
   {
-    path: '', component: AdminMainComponent,
-    children: [
-      {path: 'addBrand', component: AddBrandFormComponent},
-      {path: 'addProduct', component: AddProductFormComponent},
-      {path: 'editProduct/:id', component: EditProductFormComponent},
-      {path: 'addCategory', component: AddCategoryFormComponent},
-      {path: 'brands/edit/:id', component: EditBrandFormComponent},
-      {path: 'categories/edit/:id', component: EditCategoryFormComponent},
-      {path: 'addSize', component: AddSizeFormComponent},
-      {path: 'test', component: TestComponent}
-    ]
-  }
+    path: '', component: AdminMainComponent},
+    {path: 'addBrand', component: AddBrandFormComponent},
+    {path: 'addProduct', component: AddProductFormComponent},
+    {path: 'editProduct/:id', component: EditProductFormComponent},
+    {path: 'addCategory', component: AddCategoryFormComponent},
+    {path: 'brands/edit/:id', component: EditBrandFormComponent},
+    {path: 'categories/edit/:id', component: EditCategoryFormComponent},
+    {path: 'addSize', component: AddSizeFormComponent},
+    {path: 'test', component: TestComponent}
 ];
 
 @NgModule({

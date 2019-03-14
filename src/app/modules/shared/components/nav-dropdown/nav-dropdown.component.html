@@ -1,4 +1,5 @@
 <a class="nav-link" (click)="toogle()">{{link.name | titlecase}}</a>
+<app-nav-link></app-nav-link>
 <div class="nav-dropdown-content bg-dark" *ngIf="isOpen" (app-click-outside)="toogle()">
   <app-nav-vertical [links]="link.sublinks" [toogleMenu]="toogleMenu"></app-nav-vertical>
 </div>

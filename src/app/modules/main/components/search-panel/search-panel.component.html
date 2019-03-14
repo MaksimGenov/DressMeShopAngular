@@ -15,6 +15,7 @@
       <app-multiselect-dropdown
         *ngIf="categoriesDropdownList" 
         [data]="categoriesDropdownList"
+        [selectedItems]="selectedCategories"
         [settings]="categoryDropdownSettings"
         (update)="onCategorySelect($event)">
       </app-multiselect-dropdown>
@@ -25,6 +26,7 @@
       <app-multiselect-dropdown
         *ngIf="sizesDropdownList" 
         [data]="sizesDropdownList"
+        [selectedItems]="selectedSizes"
         [settings]="sizeDropdownSettings"
         (update)="onSizeSelect($event)">
       </app-multiselect-dropdown>

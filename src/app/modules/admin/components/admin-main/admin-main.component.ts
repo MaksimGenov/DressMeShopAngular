@@ -7,10 +7,12 @@ import { Link } from '../../../../models/Link';
   styleUrls: ['./admin-main.component.css']
 })
 export class AdminMainComponent implements OnInit {
-  navLinks: Link[] = [
+  links: Link[] = [
     {name: 'Add Brand', url:'addBrand', protection: {admin: true, user: false}},
     {name: 'Add Category', url: 'addCategory', protection: {admin: true, user: false}},
-    {name: 'Add Product', url: 'addProduct', protection: {admin: true, user: false}}
+    {name: 'Add Product', url: 'addProduct', protection: {admin: true, user: false}},
+    {name: 'Add Size', url: 'addSize', protection: {admin: true, user: false}},
+    
   ]
   constructor() { }
 
