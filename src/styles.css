@@ -22,7 +22,8 @@ body {
 }
 
 #notification {
-  position: sticky;
+  position: fixed;
+  display: none;
   top:70px;
   right: 100px;
   float: right;

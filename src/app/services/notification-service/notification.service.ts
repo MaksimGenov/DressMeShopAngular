@@ -9,7 +9,7 @@ export class NotificationService {
 
   pop(type: string, message: string) {
     let element = document.getElementById('notification')
-    element.hidden = false
+    element.style.display = "block"
     switch (type) {
       case 'success': element.style.backgroundColor = 'green'
         break
@@ -19,6 +19,6 @@ export class NotificationService {
         break
     }
     element.innerText = message
-    setTimeout(() => { element.hidden = true }, 5000)
+    setTimeout(() => { element.style.display = "none" }, 5000)
   }
 }
