@@ -13,7 +13,7 @@
     </div>
   </a>
   <div *ngIf="isAdmin" class="d-flex justify-content-end">
-    <button type="button" class="btn btn-danger m-1" (click)="deleteBrand()">Delete</button>
-    <a routerLink="/admin/brands/edit/{{brand.id}}" class="btn btn-warning m-1">Edit</a>
+    <button type="button" class="btn btn-danger m-1" (click)="onDelete()">Delete</button>
+    <a routerLink="/admin/edit-brand/{{brand.id}}" class="btn btn-warning m-1">Edit</a>
   </div>
 </div>

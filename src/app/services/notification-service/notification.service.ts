@@ -7,7 +7,19 @@ export class NotificationService {
 
   constructor() { }
 
-  pop(type: string, message: string) {
+  error(message: string) {
+    this.pop('error', message)
+  }
+
+  success(message: string) {
+    this.pop('success', message)
+  }
+
+  warning(message: string) {
+    this.pop('warning', message)
+  }
+
+  private pop(type: string, message: string) {
     let element = document.getElementById('notification')
     element.style.display = "block"
     switch (type) {

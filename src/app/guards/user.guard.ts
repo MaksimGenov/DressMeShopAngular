@@ -23,7 +23,7 @@ export class UserGuard implements CanLoad {
       return true
     }
 
-    this.router.navigate(['home'])
-    this.notificationService.pop('error', "You are not logged!")
+    this.router.navigateByUrl('/home')
+    this.notificationService.error("You are not logged!")
   }
 }

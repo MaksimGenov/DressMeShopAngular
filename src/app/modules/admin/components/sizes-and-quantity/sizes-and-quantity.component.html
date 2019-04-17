@@ -1,0 +1,13 @@
+<form *ngIf="formGroup" [formGroup]='formGroup'>
+  <label>Sizes</label>
+  <div class="form-row justify-content-around">
+    <div *ngFor="let size of sizes" class="col-12 col-md-4">
+      <div class="input-group mb-2 row m-0">
+        <div class="input-group-prepend col-2 col-md-3 p-0">
+          <div class="input-group-text w-100 d-block">{{size}}</div>
+        </div>
+        <input type="number" formControlName="{{size}}" class="form-control col-10 col-md-9" value="{{formGroup.get(size).value}}" placeholder="@Qty">
+      </div>
+    </div>
+  </div>
+</form>

@@ -30,6 +30,7 @@ export class AddProductFormComponent implements OnInit {
   categoryDropdownList: string[]
   selectedCategories: string[]
   categoriesMultiselectSettings: MultiselectSettings
+  isLoading:boolean
 
   constructor(
     private brandService: BrandService,
@@ -44,16 +45,19 @@ export class AddProductFormComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.isLoading = true
     this.setMultiSelectSettings()
 
     forkJoin(this.loadBrands(), this.loadCategories(), this.loadSizes())
-    .subscribe(([brands, categories, sizes]) => {
-      this.brands = brands.body.content
-      this.categories = categories.body.content
-      this.categoryDropdownList = categories.body.content.map(category => category.name)
-      this.sizes = sizes.body.sort((s1, s2) => Number(s1.name) >= Number(s2.name) ? 1 : -1)
-      this.initForm()
-    })
+      .subscribe(([brands, categories, sizes]) => {
+        this.brands = brands.body.content
+        this.categories = categories.body.content
+        this.categoryDropdownList = categories.body.content.map(category => category.name)
+        this.sizes = sizes.body.sort((s1, s2) => Number(s1.name) >= Number(s2.name) ? 1 : -1)
+        this.initForm()
+        this.isLoading = false
+      },
+      this.onError)
   }
 
   loadSizes(): Observable<HttpResponse<Size[]>>{
@@ -108,12 +112,11 @@ export class AddProductFormComponent implements OnInit {
 
   onSuccess(product: Product) {
     this.resetForm()
-    this.notificationService.pop('success', 'Product created successfully!');
+    this.notificationService.success('Product created successfully!');
   }
 
   onError(error) {
-    console.log(error)
-    this.notificationService.pop('error', error.error)
+    this.notificationService.error(error.message)
   }
 
   resetForm() {

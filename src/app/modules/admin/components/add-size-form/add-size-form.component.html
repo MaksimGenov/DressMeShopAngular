@@ -1,4 +1,6 @@
-
-<h2>Add Size</h2>
-<input class="form-control" type="text" [formControl]="size">
-<button class="btn btn-primary" (click)="onSubmit()">Add Size</button>
+<form class="container-fluid">
+  <div class="form-group">
+    <input class="form-control" type="text" [formControl]="size" placeholder="Enter size...">
+  </div>
+  <button class="btn btn-primary" (click)="onSubmit()">Add Size</button>
+</form>

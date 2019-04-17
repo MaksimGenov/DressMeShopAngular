@@ -1,11 +1,10 @@
-import { AbstractControl } from "@angular/forms";
+import { FormGroup } from "@angular/forms";
 
-export const passwordsMatcher = (control: AbstractControl) => {
-  const password = control.get('password').value
-  const confirm = control.get('repeatPassword').value
-  if (password === confirm) {
+export const passwordsMatcher = (form: FormGroup) => {
+  const password = form.get('password').value
+  const confirm = form.get('confirmedPassword').value
+  if (password === confirm) 
     return null
-  } else {
-    control.get('repeatPassword').setErrors({nomatch: 'Passwords do not macth!'})
-  }
+    
+  form.get('confirmedPassword').setErrors({nomatch: 'Passwords do not macth!'})
 }

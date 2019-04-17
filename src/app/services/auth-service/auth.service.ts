@@ -9,6 +9,7 @@ import { OrderItem } from 'src/app/models/OrderItem';
 import { Observable } from 'rxjs';
 import { HttpResponse } from '@angular/common/http';
 import { OrderItemCreateDto } from 'src/app/models/OrderItemCreateDto';
+import { UserCreateDto } from 'src/app/models/user/UserCreateDto';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -19,7 +20,6 @@ export class AuthService {
   constructor(
     private fetcher: Fetcher,
     private router: Router,
-    private location: Location,
     private notificationService: NotificationService
   ) { }
 
@@ -37,26 +37,19 @@ export class AuthService {
         user => this.login(user),
         error => {
           console.log(error)
-          this.notificationService.pop('error', error.error)
+          this.notificationService.error(error.error)
         }
       )
   }
 
-  register(username: string, password: string, repeatPassword, remeber: boolean) {
-    let data  = {
-      'username': username,
-      'password': password,
-      'confirmedPassword': repeatPassword,
-      'email': 'maximgenov@abv.bg'
-    }
-
+  register(user: UserCreateDto) {
     const endpoint = this.collection + '/register'
     const url = environment.apiUrl + endpoint
 
-    this.fetcher.post<User>(url, data)
+    this.fetcher.post<User>(url, user)
       .subscribe(
         user => this.login(user),
-        error => this.notificationService.pop('error', error.error)
+        error => this.notificationService.error(error.error)
       )
   }
 
@@ -66,13 +59,13 @@ export class AuthService {
     localStorage.setItem('username', user.username)
     localStorage.setItem('cartId', user.cartId)
     this.router.navigateByUrl('/home')
-    this.notificationService.pop('success', `Welcome, ${user.username}!`)
+    this.notificationService.success(`Welcome, ${user.username}!`)
   }
 
   logout() {
     localStorage.clear()
     this.router.navigateByUrl('home')
-    this.notificationService.pop('success', 'Logout successful!')
+    this.notificationService.success('Logout successful!')
   }
 
   get token(): string {
@@ -122,13 +115,13 @@ export class AuthService {
     const endpoint = this.collection + '/add-order-item-to-cart'
     const url = environment.apiUrl + endpoint
 
-    this.fetcher.post(url, orderItem).subscribe(response => this.notificationService.pop("success", "Product added successfully."))
+    this.fetcher.post(url, orderItem).subscribe(response => this.notificationService.success("Product added successfully."))
   }
 
   removeProductFromCart(id) {
     const endpoint = this.collection + "/remove-order-item-from-cart/" + id
     const url = environment.apiUrl + endpoint
 
-    this.fetcher.delete(url).subscribe(response => this.notificationService.pop("success", "Product removed from cart."))
+    this.fetcher.delete(url).subscribe(response => this.notificationService.success("Product removed from cart."))
   }
 }

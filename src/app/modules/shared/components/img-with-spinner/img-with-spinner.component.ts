@@ -11,13 +11,16 @@ export class ImgWithSpinnerComponent implements OnChanges {
   @Input() spinnerHeight: string
   @Input() isLoading: boolean = true
 
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes.src.previousValue !== changes.src.currentValue)
+      this.isLoading = true;
+  }
+
   onLoad() {
     this.isLoading = false
   }
 
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes.src.previousValue !== changes.src.currentValue) {
-      this.isLoading = true;
-    }
+  onError() {
+    this.src = "src/assets/no-image-icon-23494.png"
   }
 }

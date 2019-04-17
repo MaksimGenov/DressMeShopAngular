@@ -1,23 +1,19 @@
-<div class="container-fluid">
-  <div class="container-fluid">
-    <form [formGroup]='form' (ngSubmit)='onSubmit($event)'>
-      <div class="form-group">
-        <label>Name</label>
-        <input type="text" class="form-control" formControlName='name' placeholder="Enter name...">
-        <div class="alert alert-danger" *ngIf='name.invalid && name.touched'>Name is required!</div>
-      </div>
-      <div class="form-group">
-        <label>Description</label>
-        <textarea type="text" class="form-control" formControlName='description' placeholder="Description..."></textarea>
-        <div class="alert alert-danger" *ngIf='description.invalid && description.touched'>Description is required!</div>
-      </div>
-      <div class="form-group">
-        <label>Image</label>
-        <input type="file" class="form-control" formControlName='file' (change)='onFileChange($event)'>
-        <img class="col-md-2 preview-img" src="{{imagePreviewUrl}}" />
-        <div class="alert alert-danger" *ngIf='file.invalid && file.touched'>Image is required!</div>
-      </div>
-      <button type="submit" [disabled]='form.invalid' class="btn btn-primary btn-block">Add Brand</button>
-    </form>
+<form class="container-fluid" [formGroup]='form' (ngSubmit)='onSubmit($event)'>
+  <div class="form-group">
+    <label>Name</label>
+    <input type="text" class="form-control" formControlName='name' placeholder="Enter name...">
+    <div class="alert alert-danger" *ngIf='name.invalid && name.touched'>Name is required!</div>
   </div>
-</div>
+  <div class="form-group">
+    <label>Description</label>
+    <textarea type="text" class="form-control" formControlName='description' placeholder="Description..."></textarea>
+    <div class="alert alert-danger" *ngIf='description.invalid && description.touched'>Description is required!</div>
+  </div>
+  <div class="form-group">
+    <label>Image</label>
+    <input type="file" class="form-control" formControlName='image' (change)='onFileChange($event)'>
+    <img class="col-md-2 preview-img" src="{{imagePreviewUrl}}" />
+    <div class="alert alert-danger" *ngIf='file.invalid && file.touched'>Image is required!</div>
+  </div>
+  <button type="submit" [disabled]='form.invalid' class="btn btn-primary btn-block">Add Brand</button>
+</form>

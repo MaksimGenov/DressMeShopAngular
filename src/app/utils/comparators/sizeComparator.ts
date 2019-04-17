@@ -1,0 +1,1 @@
+export function compareSizes(s1, s2)  {return Number(s1) >= Number(s2) ? 1 : -1}

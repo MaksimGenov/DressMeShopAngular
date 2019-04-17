@@ -25,9 +25,7 @@ export class CategoriesListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.route.queryParams.subscribe(queryParams => {
-      this.loadCategories(queryParams)
-    })
+    this.route.queryParams.subscribe(this.loadCategories)
   }
 
   private loadCategories(queryParams: Params) {
@@ -53,7 +51,7 @@ export class CategoriesListComponent implements OnInit {
 
   deleteCategory(id: string) {
     this.categoryService.delete(id).subscribe(response => {
-      this.notificationService.pop("success", "Category deleted successfully!")
+      this.notificationService.success("Category deleted successfully!")
       this.categories = this.categories.filter(c => c.id !== id)
     })
   }

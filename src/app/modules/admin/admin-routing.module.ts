@@ -12,16 +12,18 @@ import { TestComponent } from './components/test/test.component';
 import { AddSizeFormComponent } from './components/add-size-form/add-size-form.component';
 
 const routes: Routes = [
-  {
-    path: '', component: AdminMainComponent},
-    {path: 'addBrand', component: AddBrandFormComponent},
-    {path: 'addProduct', component: AddProductFormComponent},
-    {path: 'editProduct/:id', component: EditProductFormComponent},
-    {path: 'addCategory', component: AddCategoryFormComponent},
-    {path: 'brands/edit/:id', component: EditBrandFormComponent},
-    {path: 'categories/edit/:id', component: EditCategoryFormComponent},
-    {path: 'addSize', component: AddSizeFormComponent},
-    {path: 'test', component: TestComponent}
+  {path: '' , pathMatch: 'full', redirectTo: "add"},
+  {path: 'add', component: AdminMainComponent, children: [
+    {path: '', pathMatch: 'full', redirectTo: 'product'},
+    {path: 'brand', component: AddBrandFormComponent},
+    {path: 'product', component: AddProductFormComponent},
+    {path: 'category', component: AddCategoryFormComponent},
+    {path: 'size', component: AddSizeFormComponent}
+  ]},
+  {path: 'edit-product/:id', component: EditProductFormComponent},
+  {path: 'edit-brand/:id', component: EditBrandFormComponent},
+  {path: 'edit-category/:id', component: EditCategoryFormComponent},
+  {path: 'test', component: TestComponent}
 ];
 
 @NgModule({

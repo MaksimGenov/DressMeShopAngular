@@ -20,7 +20,8 @@ export class RegisterFromComponent implements OnInit {
       {
         username: new FormControl('', [Validators.required, Validators.pattern(this.usernamePattern)]),
         password: new FormControl('', [Validators.required, Validators.pattern(this.passwordPattern)]),
-        repeatPassword: new FormControl('', [Validators.required, Validators.pattern(this.passwordPattern)])
+        confirmedPassword: new FormControl('', [Validators.required, Validators.pattern(this.passwordPattern)]),
+        email: new FormControl(null, [Validators.required])
       },
       { validators: passwordsMatcher }
     )
@@ -34,16 +35,11 @@ export class RegisterFromComponent implements OnInit {
     return this.form.get('password')
   }
 
-  get repeatPassword() {
-    return this.form.get('repeatPassword')
+  get confirmedPassword() {
+    return this.form.get('confirmedPassword')
   }
 
   onSubmit() {
-    this.authService.register(
-      this.username.value,
-      this.password.value,
-      this.repeatPassword.value,
-      true
-    )
+    this.authService.register(this.form.value)
   }
 }

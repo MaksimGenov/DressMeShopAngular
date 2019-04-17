@@ -15,6 +15,9 @@ import { ClickOutsideDirective } from './directives/click-outside/click-outside.
 import { NavVerticalComponent } from './components/nav-vertical/nav-vertical.component';
 import { NavHorizontalComponent } from './components/nav-horizontal/nav-horizontal.component';
 import { NavDropdownComponent } from './components/nav-dropdown/nav-dropdown.component';
+import { LinkComponent } from './components/link/link.component';
+import { NavTabsComponent } from './components/nav-tabs/nav-tabs.component';
+import { CubeComponent } from './components/cube/cube.component';
 
 @NgModule({
   imports: [
@@ -33,7 +36,10 @@ import { NavDropdownComponent } from './components/nav-dropdown/nav-dropdown.com
     ClickOutsideDirective,
     NavVerticalComponent,
     NavHorizontalComponent,
-    NavDropdownComponent
+    NavDropdownComponent,
+    LinkComponent,
+    NavTabsComponent,
+    CubeComponent
   ],
   providers: [
     AuthService,
@@ -50,7 +56,10 @@ import { NavDropdownComponent } from './components/nav-dropdown/nav-dropdown.com
     ClickOutsideDirective,
     NavVerticalComponent,
     NavHorizontalComponent,
-    NavDropdownComponent
+    NavDropdownComponent,
+    LinkComponent,
+    NavTabsComponent,
+    CubeComponent
   ],
 })
 export class SharedModule { }

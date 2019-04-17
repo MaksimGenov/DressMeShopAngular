@@ -8,10 +8,10 @@ import { Link } from '../../../../models/Link';
 })
 export class AdminMainComponent implements OnInit {
   links: Link[] = [
-    {name: 'Add Brand', url:'addBrand', protection: {admin: true, user: false}},
-    {name: 'Add Category', url: 'addCategory', protection: {admin: true, user: false}},
-    {name: 'Add Product', url: 'addProduct', protection: {admin: true, user: false}},
-    {name: 'Add Size', url: 'addSize', protection: {admin: true, user: false}},
+    {name: 'Add Product', url: '/admin/add/product', protection: {admin: true, user: false}},
+    {name: 'Add Brand', url:'/admin/add/brand', protection: {admin: true, user: false}},
+    {name: 'Add Category', url: '/admin/add/category', protection: {admin: true, user: false}},
+    {name: 'Add Size', url: '/admin/add/size', protection: {admin: true, user: false}},
     
   ]
   constructor() { }

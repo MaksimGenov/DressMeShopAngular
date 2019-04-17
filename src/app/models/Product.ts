@@ -1,7 +1,7 @@
-import { Image } from "./Image";
 import { Category } from "./Category";
 import { Brand } from "./Brand";
 import { SizeQuantity } from "./SizeQuantity";
+import { Image } from "./Image";
 
 export interface Product {
   id: string,

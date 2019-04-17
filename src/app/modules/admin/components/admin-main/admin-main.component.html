@@ -1,5 +1,9 @@
-<div class="row justify-content-between">
-  <button class="col-md-3 btn btn-secondary" *ngFor="let link of links">
-    <app-nav-link [link]="link"></app-nav-link>
-  </button>
+<h1 class="mb-3">Admin Panel</h1>
+<div class="row">
+  <div class="col-8">
+    <app-nav-tabs [links]="links"></app-nav-tabs>
+  </div>
+  <div id="admin-outlet" class="col-8 mt-3">
+    <router-outlet></router-outlet>
+  </div>
 </div>

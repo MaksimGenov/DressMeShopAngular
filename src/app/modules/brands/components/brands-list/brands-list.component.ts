@@ -41,4 +41,8 @@ export class BrandsListComponent implements OnInit {
     return searchParams
   }
 
+  onBrandDelete(id: string) {
+    console.log(id)
+    this.brands = this.brands.filter(b => b.id != id)
+  }
 }

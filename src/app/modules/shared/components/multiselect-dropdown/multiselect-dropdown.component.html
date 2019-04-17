@@ -1,20 +1,17 @@
-<div class="dropdown" *ngIf="data">
+<div class="dropdown">
   <div class="dropdown-line" >
     <div *ngIf="selectedItems.length === 0" class="dropdown-placeholder" (click)="onOpen()">
       <span>{{settings.placeholder}}</span>
     </div>
   
     <div *ngIf="selectedItems.length > 0" class="selected-items-container">
-        <div 
-          *ngFor="let selectedItem of selectedItems.slice(0, settings.itemsShowLimit)"
-          class="selected-item-box">
-            <span>{{selectedItem}}</span>
-            <i (click)="removeItem(selectedItem)">x</i>
-        </div>
-        <div *ngIf="selectedItems.length > settings.itemsShowLimit"
-            class="selected-item-box">
-            +{{selectedItems.length - settings.itemsShowLimit}}
-        </div>
+      <div class="selected-item-box" *ngFor="let item of selectedItemsToShow">
+        <span>{{item}}</span>
+        <i (click)="removeItem(item)">x</i>
+      </div>
+      <div *ngIf="selectedItems.length > settings.itemsShowLimit" class="selected-item-box">
+        +{{selectedItems.length - settings.itemsShowLimit}}
+      </div>
     </div>
   
     <div class="dropdown-btn" (click)="onOpen()">
@@ -22,34 +19,35 @@
     </div>
   </div>
   
-  <div *ngIf="isDropDownOpen" class="container-fluid border m-auto p-1" (app-click-outside)="onClickOutside($event)">
-    <div *ngIf="!settings.allowSingleSelection" class="form-check">
-      <input 
-        class="form-check-input"
-        type="checkbox" 
-        id="select-all-items" 
-        [checked]="areAllItemsSelected"
-        (click)="onSelectAllItems($event)" 
-      >
-      <label class="form-check-label" for="select-all-items">
-        select all
-      </label>
+  <div *ngIf="isDropdownOpen" class="container-fluid border m-auto p-1" (app-click-outside)="onClickOutside($event)">
+    <div id="spinner-container" *ngIf="!dropdownList.length">
+      <app-spinner [height]="'50px'" [width]="'50px'"></app-spinner>
     </div>
-    
-    <input class="form-control" type="text" (keyup)="onSerach($event)" placeholder="search...">
-    
-    <div *ngFor="let item of dropdownItemList; index as i" class="form-check">
-      <input 
-        class="form-check-input"
-        id="item-checkbox-{{i}}" 
-        type="checkbox" 
-        value="{{item}}" 
-        [checked]="selectedItems.indexOf(item) > -1"
-        (click)="onItemSelect($event)"
-      >
-      <label class="form-check-label" for="item-checkbox-{{i}}">
-        {{item}}
-      </label>
+    <div *ngIf="dropdownList.length">
+      <div *ngIf="!settings.allowSingleSelection" class="form-check">
+        <input 
+          class="form-check-input"
+          type="checkbox" 
+          id="select-all-items" 
+          [checked]="areAllItemsSelected"
+          (click)="onSelectAllItems($event)" 
+        >
+        <label class="form-check-label" for="select-all-items">select all</label>
+      </div>
+        
+      <input class="form-control" type="text" (keyup)="onSerach($event)" placeholder="search...">
+      
+      <div *ngFor="let item of dropdownList; index as i" class="form-check">
+        <input 
+          class="form-check-input"
+          id="item-checkbox-{{i}}" 
+          type="checkbox" 
+          value="{{item}}" 
+          [checked]="selectedItems.indexOf(item) > -1"
+          (click)="onItemSelect($event)"
+        >
+        <label class="form-check-label" for="item-checkbox-{{i}}">{{item}}</label>
+      </div>
     </div>
   </div>
 </div>

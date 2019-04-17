@@ -6,7 +6,7 @@
     <p class="d-flex justify-content-center"> {{category.name | titlecase}}</p>
   </a>
   <div *ngIf='isAdmin' class="d-flex justify-content-between">
-    <a routerLink='/admin/categories/edit/{{category.id}}' class="btn btn-warning btn-sm col-5">Edit</a>
+    <a routerLink='/admin/edit-category/{{category.id}}' class="btn btn-warning btn-sm col-5">Edit</a>
     <button type="button" class="btn btn-danger btn-sm col-6" (click)='deleteCategory(category.id)'>Delete</button>
   </div>
 </div>

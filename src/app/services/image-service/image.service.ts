@@ -11,7 +11,7 @@ export class ImageService {
     return new Promise(async (resolve, reject) => {
       let reader = new FileReader()
       reader.onload = (e: any) => resolve(e.target.result)
-      reader.readAsDataURL(image)
+      return reader.readAsDataURL(image)
     })
     
   }

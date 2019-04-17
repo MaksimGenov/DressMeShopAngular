@@ -38,17 +38,10 @@ export class ProductService {
     return this.fetcher.get<Product>(url)
   }
 
-  delete(id: string) {
+  delete(id: string): Observable<any> {
     const endpoint = this.collection + '/delete/' + id
     const url = environment.apiUrl + endpoint
-    this.fetcher.delete(url)
-      .subscribe(
-        response => {
-          this.location.back()
-          this.notificationService.pop('success', 'Product delete successfully!')
-        },
-        error => this.notificationService.pop('error', error.error)
-      )
+    return this.fetcher.delete(url)
   }
 
   edit(product: ProductUpdateDTO, images: File[]) {
@@ -60,9 +53,9 @@ export class ProductService {
       .subscribe(
         product => {
           this.location.back()
-          this.notificationService.pop('success', 'Product updated sucessfully!')
+          this.notificationService.success('Product updated sucessfully!')
         },
-        error => this.notificationService.pop('error', error.error)
+        error => this.notificationService.error(error.error)
       )
   }
 
@@ -70,5 +63,11 @@ export class ProductService {
     const endpoint = this.collection + '/search'
     const url = environment.apiUrl + endpoint
     return this.fetcher.post<Page<Product>>(url, productSearchDTO);
+  }
+
+  deleteImages(productId: string, imagesId: string[]) {
+    const endpoint = this.collection + '/' + productId +'/delete-images'
+    const url = environment.apiUrl + endpoint
+    return this.fetcher.post(url, imagesId);
   }
 }

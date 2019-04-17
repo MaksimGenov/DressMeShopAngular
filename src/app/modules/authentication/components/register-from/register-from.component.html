@@ -15,6 +15,19 @@
     </div>
 
     <div class="form-group">
+      <label>Email</label>
+      <input class="form-control" type="text" formControlName='email' placeholder="Enter email...">
+      <div class="alert-danger p-1 mt-1 rounded" *ngIf='username.invalid && username.touched'>
+        <small *ngIf='username.errors.required'>
+          Username is required!
+        </small>
+        <small *ngIf='username.errors.pattern'>
+          Username must be between 3 and 20 symbols long, start with latin letter and contain only digits and latin letters.
+        </small>
+      </div>
+    </div>
+
+    <div class="form-group">
       <label>Password</label>
       <input class="form-control" type="password" formControlName='password' placeholder="Enter password...">
       <div *ngIf='password.invalid && password.touched' class="alert-danger p-1 mt-1 rounded">
@@ -28,11 +41,11 @@
     </div>
 
     <div class="form-group">
-      <label>Repeat Password</label>
-      <input class="form-control" type="password" formControlName='repeatPassword' placeholder="Confirm password...">
-      <div *ngIf='repeatPassword.errors?.nomatch && repeatPassword.dirty' class="alert-danger p-1 mt-1 rounded">
+      <label>Confirm Password</label>
+      <input class="form-control" type="password" formControlName='confirmedPassword' placeholder="Confirm password...">
+      <div *ngIf='confirmedPassword.errors?.nomatch && confirmedPassword.dirty' class="alert-danger p-1 mt-1 rounded">
         <small>
-          {{repeatPassword.errors.nomatch}}
+          {{confirmedPassword.errors.nomatch}}
         </small>
       </div>
     </div>

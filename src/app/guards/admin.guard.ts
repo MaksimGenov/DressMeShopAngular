@@ -13,7 +13,6 @@ export class AdminGuard implements CanLoad {
 
   constructor(
     private authService: AuthService,
-    private location: Location,
     private router: Router,
     private notificationService: NotificationService
   ) { }
@@ -27,7 +26,7 @@ export class AdminGuard implements CanLoad {
       return true
     }
 
-    this.router.navigate(['home'])
-    this.notificationService.pop('error', "Sorry you are not authorized for this section!")
+    this.router.navigateByUrl('home')
+    this.notificationService.error("You are not authorized for this section!")
   }
 }

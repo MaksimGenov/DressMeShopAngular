@@ -83,3 +83,8 @@
   display: inline-flex;
   width: 10%;
 }
+
+#spinner-container {
+  position: relative;
+  min-height: 80px;
+}

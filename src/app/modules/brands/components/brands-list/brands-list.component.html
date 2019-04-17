@@ -1,8 +1,6 @@
 <app-spinner *ngIf='isLoading'></app-spinner>
 <div *ngIf='!isLoading'>
-  <div class="row m-0">
-    <app-brand-card *ngFor='let brand of brands' [brand]='brand'></app-brand-card>
-  </div>
+  <app-brand-card *ngFor='let brand of brands' [brand]='brand' (delete)="onBrandDelete($event)"></app-brand-card>
   <div class="d-flex justify-content-center">
     <app-pagination [itemsCount]="brandsTotalCount" [itemsPerPage]="brandsPerPage"></app-pagination>
   </div>

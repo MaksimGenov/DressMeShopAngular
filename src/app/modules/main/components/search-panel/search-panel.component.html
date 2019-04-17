@@ -3,7 +3,6 @@
     <div class="form-group">
       <label>Brand</label>
       <app-multiselect-dropdown
-        *ngIf="brandDropDownList"
         [data]="brandDropDownList"
         [settings]="brandDropdownSettings"
         (update)="onBrandSelect($event)">
@@ -13,7 +12,6 @@
     <div class="form-group">
       <label>Categories</label>
       <app-multiselect-dropdown
-        *ngIf="categoriesDropdownList" 
         [data]="categoriesDropdownList"
         [selectedItems]="selectedCategories"
         [settings]="categoryDropdownSettings"
@@ -23,8 +21,7 @@
 
     <div class="form-group">
       <label>Sizes</label>
-      <app-multiselect-dropdown
-        *ngIf="sizesDropdownList" 
+      <app-multiselect-dropdown 
         [data]="sizesDropdownList"
         [selectedItems]="selectedSizes"
         [settings]="sizeDropdownSettings"

@@ -7,7 +7,6 @@ import { ProductCardComponent } from './components/product-card/product-card.com
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { ProductsListComponent } from './components/products-list/products-list.component';
 import { ProductService } from 'src/app/services/product-service/product.service';
-import { CartService } from 'src/app/services/cart-service/cart.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
@@ -24,8 +23,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ProductsListComponent
   ],
   providers: [
-    ProductService,
-    CartService
+    ProductService
   ]
 })
 export class ProductsModule { }

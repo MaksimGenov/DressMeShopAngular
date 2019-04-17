@@ -27,7 +27,7 @@
       
       <div class="row justify-content-end">
         <button *ngIf='isAdmin' class="btn btn-danger m-2" (click)='deleteProduct()'>Delete</button>
-        <a *ngIf='isAdmin' class="btn btn-warning m-2" routerLink='/admin/editProduct/{{product.id}}'>Edit</a>
+        <a *ngIf='isAdmin' class="btn btn-warning m-2" routerLink='/admin/edit-product/{{product.id}}'>Edit</a>
       </div>
     
   </div>

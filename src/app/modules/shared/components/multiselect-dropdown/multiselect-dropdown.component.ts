@@ -10,8 +10,8 @@ export class MultiselectDropdownComponent implements OnInit, OnChanges {
   @Input() settings: any
   @Input() selectedItems: string[] = []
   @Output() update: EventEmitter<string[]>
-  isDropDownOpen: boolean
-  dropdownItemList: string[]
+  isDropdownOpen: boolean
+  dropdownList: string[]
   areAllItemsSelected: boolean
   
   constructor() {
@@ -19,14 +19,17 @@ export class MultiselectDropdownComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
-    this.isDropDownOpen = false
+    this.isDropdownOpen = false
     this.areAllItemsSelected = false
     this.initSetting()
   }
   
-  ngOnChanges() {
+  ngOnChanges(changes: SimpleChanges) {
+    if(changes.data && changes.data.currentValue)
+      this.dropdownList = Array.from(changes.data.currentValue) //[...this.data]
+    else
+      this.dropdownList = []
     this.areAllItemsSelected = false
-    this.dropdownItemList = [...this.data]
   }  
 
   initSetting() {
@@ -47,11 +50,11 @@ export class MultiselectDropdownComponent implements OnInit, OnChanges {
   }
 
   onOpen() {
-    this.isDropDownOpen = true
+    this.isDropdownOpen = true
   }
   
   onClickOutside(event) {
-    this.isDropDownOpen = false
+    this.isDropdownOpen = false
   }
 
   onItemSelect(event) {
@@ -72,14 +75,14 @@ export class MultiselectDropdownComponent implements OnInit, OnChanges {
       this.selectedItems = []
       this.areAllItemsSelected = false
     }
-    this.isDropDownOpen = false
+    this.isDropdownOpen = false
     this.emitChanges()
   }
 
   onSerach(event) {
     let value = event.target.value
-    this.dropdownItemList = [...this.data]
-    this.dropdownItemList = this.dropdownItemList.filter(item => item.includes(value))
+    this.dropdownList = [...this.data]
+    this.dropdownList = this.dropdownList.filter(item => item.includes(value))
   }
 
   removeItem(item) {
@@ -96,5 +99,9 @@ export class MultiselectDropdownComponent implements OnInit, OnChanges {
 
   emitChanges() {
     this.update.emit(this.selectedItems)
+  }
+
+  get selectedItemsToShow():string[] {
+    return this.selectedItems.slice(0, this.settings.itemsShowLimit)
   }
 }

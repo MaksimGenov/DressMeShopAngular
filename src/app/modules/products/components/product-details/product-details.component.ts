@@ -5,6 +5,8 @@ import { AuthService } from '../../../../services/auth-service/auth.service';
 import { Product } from 'src/app/models/Product';
 import { Form, FormGroup, FormControl } from '@angular/forms';
 import { SizeQuantity } from 'src/app/models/SizeQuantity';
+import { Location } from '@angular/common';
+import { NotificationService } from 'src/app/services/notification-service/notification.service';
 
 @Component({
   selector: 'app-product-details',
@@ -22,6 +24,8 @@ export class ProductDetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private productService: ProductService,
     private authService: AuthService,
+    private location: Location,
+    private notificationService: NotificationService
   ) { }
 
   ngOnInit() {
@@ -61,6 +65,13 @@ export class ProductDetailsComponent implements OnInit {
 
   deleteProduct() {
     this.productService.delete(this.product.id)
+    .subscribe(
+      response => {
+        this.location.back()
+        this.notificationService.success('Product delete successfully!')
+      },
+      error => this.notificationService.error(error.error)
+    )
   }
 
   addToCart() {
@@ -81,4 +92,6 @@ export class ProductDetailsComponent implements OnInit {
   get isLogged(): boolean {
     return this.authService.isLogged()
   }
+
+
 }
