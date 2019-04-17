@@ -21,6 +21,6 @@ export class ImgWithSpinnerComponent implements OnChanges {
   }
 
   onError() {
-    this.src = "src/assets/no-image-icon-23494.png"
+    this.src = "/assets/no-image-icon-23494.png"
   }
 }
